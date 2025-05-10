@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Header } from "@/features/header";
+import { Footer } from "@/features/footer";
 
 export const metadata: Metadata = {
   title: "琢磨会",
@@ -15,9 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="px-4">
+      <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
