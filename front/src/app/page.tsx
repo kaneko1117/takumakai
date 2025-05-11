@@ -1,10 +1,10 @@
-import { Button } from "@/components/shadcn/button";
+import { RankingCard } from "@/features/rankingCard/rankingCard";
 
 export default function Home() {
   return (
-    <div>
-      <p>麻雀</p>
-      <Button variant="default">入会</Button>
+    <div className="flex items-center justify-center gap-2">
+      <RankingCard />
+      <RankingCard />
     </div>
   );
 }
