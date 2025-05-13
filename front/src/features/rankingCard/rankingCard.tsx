@@ -1,19 +1,31 @@
-import { Card, CardContent, CardFooter } from "@/components/shadcn/card";
-import { CircleParking } from "lucide-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/shadcn/avatar";
+import { Card, CardContent } from "@/components/shadcn/card";
+import { RankingCardProps } from "./type";
 
-export const RankingCard = () => {
+type Props = {
+  data: RankingCardProps;
+};
+
+export const RankingCard = ({ data }: Props) => {
   return (
-    <Card className="w-1/2 bg-bgGray">
-      <CardContent className="flex items-center justify-left gap-2 bg-white text-primary">
-        <CircleParking className="rounded-md p-1 shadow-sm" size={40} />
-        <p className="font-bold text-lg">長谷川</p>
-      </CardContent>
-      <CardFooter>
-        <div className="flex items-center justify-left gap-2 text-sm text-gray">
-          <p>平均ポイント</p>
-          <p>+124</p>
+    <Card className="base-1/2 ">
+      <CardContent className="flex flex-col items-center justify-center gap-4">
+        <Avatar className="w-20 h-20">
+          <AvatarImage src={data.imageUrl} className="w-20 h-20" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className="flex flex-col items-center justify-center gap-1">
+          <p className="text-lg font-bold">{data.name}</p>
+          <p className="text-xs text-gray">
+            {data.type}
+            <span className="text-primary text-base ml-1">{data.value}</span>
+          </p>
         </div>
-      </CardFooter>
+      </CardContent>
     </Card>
   );
 };
