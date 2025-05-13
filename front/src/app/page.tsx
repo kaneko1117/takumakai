@@ -1,10 +1,39 @@
-import { Button } from "@/components/shadcn/button";
+import { RankingCard } from "@/features/rankingCard/rankingCard";
+import { RankingCardProps } from "@/features/rankingCard/type";
+
+const TEST_DATA: RankingCardProps[] = [
+  {
+    name: "琢磨さん",
+    imageUrl: "https://github.com/shadcn.png",
+    type: "平均ポイント",
+    value: 123,
+  },
+  {
+    name: "琢磨さん",
+    imageUrl: "https://github.com/shadcn.png",
+    type: "平均順位",
+    value: 2.23,
+  },
+  {
+    name: "琢磨さん",
+    imageUrl: "https://github.com/shadcn.png",
+    type: "ベストスコア",
+    value: 85000,
+  },
+  {
+    name: "琢磨さん",
+    imageUrl: "https://github.com/shadcn.png",
+    type: "平均スコア",
+    value: 32000,
+  },
+];
 
 export default function Home() {
   return (
-    <div>
-      <p>麻雀</p>
-      <Button variant="default">入会</Button>
+    <div className="grid grid-cols-2 gap-2">
+      {TEST_DATA.map((data, index) => (
+        <RankingCard key={index} data={data} />
+      ))}
     </div>
   );
 }
