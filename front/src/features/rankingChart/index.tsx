@@ -2,19 +2,20 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { RankingChartProps } from "./type";
+import { Card } from "./components/card";
 
 const data: RankingChartProps[] = [
   {
-    subject: "トップ率",
-    per: 0.33,
+    subject: "ラス回避率",
+    per: 0.9,
   },
   {
     subject: "連対率",
     per: 0.63,
   },
   {
-    subject: "ラス回避率",
-    per: 0.9,
+    subject: "トップ率",
+    per: 0.33,
   },
 ];
 const DynamicChart = dynamic(() => import("./components/chart"), {
@@ -22,5 +23,13 @@ const DynamicChart = dynamic(() => import("./components/chart"), {
   loading: () => <div>Loading...</div>,
 });
 export const RankingChart = () => {
-  return <DynamicChart data={data} />;
+  return (
+    <>
+      <Card>
+        <div className="absolute top-8">
+          <DynamicChart data={data} />
+        </div>
+      </Card>
+    </>
+  );
 };
