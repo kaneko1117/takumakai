@@ -1,5 +1,6 @@
 import { RankingCard } from "@/features/rankingCard/rankingCard";
 import { RankingCardProps } from "@/features/rankingCard/type";
+import { RankingChart } from "@/features/rankingChart";
 
 const TEST_DATA: RankingCardProps[] = [
   {
@@ -30,10 +31,13 @@ const TEST_DATA: RankingCardProps[] = [
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-2 gap-2">
-      {TEST_DATA.map((data, index) => (
-        <RankingCard key={index} data={data} />
-      ))}
+    <div className="flex flex-col items-center justify-center gap-4">
+      <div className="grid grid-cols-2 gap-2">
+        {TEST_DATA.map((data, index) => (
+          <RankingCard key={index} data={data} />
+        ))}
+      </div>
+      <RankingChart />
     </div>
   );
 }
