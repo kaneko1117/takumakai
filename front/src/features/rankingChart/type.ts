@@ -1,4 +1,4 @@
 export type RankingChartProps = {
   subject: string;
-  per: number;
+  percentage: number;
 };

@@ -7,15 +7,15 @@ import { Card } from "./components/card";
 const data: RankingChartProps[] = [
   {
     subject: "ラス回避率",
-    per: 0.9,
+    percentage: 0.9,
   },
   {
     subject: "連対率",
-    per: 0.63,
+    percentage: 0.63,
   },
   {
     subject: "トップ率",
-    per: 0.33,
+    percentage: 0.33,
   },
 ];
 const DynamicChart = dynamic(() => import("./components/chart"), {
