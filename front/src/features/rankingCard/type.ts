@@ -1,4 +1,4 @@
-export type RankingCardProps = {
+export type RankingCardType = {
   name: string;
   imageUrl: string;
   type: string;

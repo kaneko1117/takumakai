@@ -1,4 +1,4 @@
-export type RankingChartProps = {
+export type RankingChartType = {
   subject: string;
   percentage: number;
 };

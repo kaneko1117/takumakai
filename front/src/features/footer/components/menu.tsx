@@ -20,7 +20,7 @@ export const Menu = () => {
     }
   );
   return (
-    <div className="w-full">
+    <div className="w-full bg-white">
       <Separator className="w-full mb-2" />
       <div className="w-full h-15 flex  items-center justify-around text-sm">
         <Link
@@ -37,10 +37,13 @@ export const Menu = () => {
           対局
         </div>
         <Separator orientation="vertical" />
-        <div className={cn(linkVariant({ isActive: false }))}>
+        <Link
+          href="/member"
+          className={cn(linkVariant({ isActive: pathname === "/member" }))}
+        >
           <Users className="mb-1" />
           ユーザー一覧
-        </div>
+        </Link>
       </div>
       <Separator className="w-full mt-2" />
     </div>
