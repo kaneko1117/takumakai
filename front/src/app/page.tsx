@@ -1,8 +1,8 @@
-import { RankingCard } from "@/features/rankingCard/rankingCard";
-import { RankingCardProps } from "@/features/rankingCard/type";
+import { RankingCard } from "@/features/rankingCard";
+import { RankingCardType } from "@/features/rankingCard/type";
 import { RankingChart } from "@/features/rankingChart";
 
-const TEST_DATA: RankingCardProps[] = [
+const TEST_DATA: RankingCardType[] = [
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",

@@ -4,10 +4,10 @@ import {
   AvatarImage,
 } from "@/components/shadcn/avatar";
 import { Card, CardContent } from "@/components/shadcn/card";
-import { RankingCardProps } from "./type";
+import { RankingCardType } from "./type";
 
 type Props = {
-  data: RankingCardProps;
+  data: RankingCardType;
 };
 
 export const RankingCard = ({ data }: Props) => {

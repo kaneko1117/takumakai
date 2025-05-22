@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import dynamic from "next/dynamic";
-import { RankingChartProps } from "./type";
+import { RankingChartType } from "./type";
 import { Card } from "./components/card";
 
-const data: RankingChartProps[] = [
+const data: RankingChartType[] = [
   {
     subject: "ラス回避率",
     percentage: 0.9,
