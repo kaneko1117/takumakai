@@ -32,7 +32,7 @@ const TEST_DATA: RankingCardProps[] = [
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 gap-2 w-full">
         {TEST_DATA.map((data, index) => (
           <RankingCard key={index} data={data} />
         ))}

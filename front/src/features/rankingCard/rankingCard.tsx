@@ -12,7 +12,7 @@ type Props = {
 
 export const RankingCard = ({ data }: Props) => {
   return (
-    <Card className="base-1/2 ">
+    <Card className="base-1/2">
       <CardContent className="flex flex-col items-center justify-center gap-4">
         <Avatar className="w-20 h-20">
           <AvatarImage src={data.imageUrl} className="w-20 h-20" />
