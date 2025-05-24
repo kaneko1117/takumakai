@@ -17,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <Header />
-        <div className="p-4">{children}</div>
-        <Footer />
+        <div className="mx-auto!important">
+          <Header />
+          <div className="p-4">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 import { MemberCard } from "@/features/memberCard";
 import { MemberCardType } from "@/features/memberCard/type";
-import { RegisterButton } from "@/features/registerButton";
+import { RegisterDialog } from "@/features/registerDialog";
 
 const TEST_DATA: MemberCardType[] = [
   {
@@ -60,7 +60,7 @@ export default function Member() {
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">会員一覧</h2>
-        <RegisterButton />
+        <RegisterDialog />
       </div>
       <div>
         {TEST_DATA.map((data, index) => (

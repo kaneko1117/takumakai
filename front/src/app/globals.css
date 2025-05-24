@@ -122,6 +122,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    @apply max-w-[428px] mx-auto;
+    @apply w-full max-w-[428px] mx-auto;
+  }
+  body[data-scroll-locked][data-scroll-locked] {
+    padding-right: 0 !important;
+    margin-inline: auto !important;
+    padding-left: 0 !important;
   }
 }
