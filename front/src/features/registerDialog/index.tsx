@@ -5,6 +5,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/shadcn/dialog";
+import { Form } from "./compornents/form";
 
 export const RegisterDialog = () => {
   return (
@@ -16,6 +17,7 @@ export const RegisterDialog = () => {
         <DialogHeader className="text-left">
           <DialogTitle>入会</DialogTitle>
         </DialogHeader>
+        <Form />
       </DialogContent>
     </Dialog>
   );
