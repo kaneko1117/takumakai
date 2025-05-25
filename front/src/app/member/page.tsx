@@ -62,11 +62,10 @@ export default function Member() {
         <h2 className="text-2xl font-bold">会員一覧</h2>
         <RegisterDialog />
       </div>
-      <div>
-        {TEST_DATA.map((data, index) => (
-          <MemberCard key={index} data={data} />
-        ))}
-      </div>
+
+      {TEST_DATA.map((data, index) => (
+        <MemberCard key={index} data={data} />
+      ))}
     </div>
   );
 }

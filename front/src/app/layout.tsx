@@ -18,8 +18,10 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <div className="mx-auto!important">
-          <Header />
-          <div className="p-4">{children}</div>
+          <div className="pb-[78px]">
+            <Header />
+            <div className="p-4 h-full">{children}</div>
+          </div>
           <Footer />
         </div>
       </body>
