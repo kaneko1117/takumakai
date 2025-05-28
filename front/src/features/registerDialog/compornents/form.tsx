@@ -54,8 +54,9 @@ export const Form = () => {
         department: "",
         password: "",
       }}
-      onSubmit={(values) => {
+      onSubmit={(values, helpers) => {
         console.log(values);
+        helpers.resetForm();
       }}
       validationSchema={SIGNUP_SCHEMA}
     >
