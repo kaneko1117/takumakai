@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
-import { useFormik } from "formik";
+import { Formik, Form as FormikForm } from "formik";
 import { FormType } from "../type";
 import { Input } from "@/components/shadcn/input";
 import { Button } from "@/components/shadcn/button";
@@ -13,71 +13,89 @@ type FormInputProps = {
   label: string;
   id: string;
   type: HTMLInputTypeAttribute;
+  errors: string | undefined;
+  touched: boolean | undefined;
 };
 
-const FormInput = ({ onChange, value, label, id, type }: FormInputProps) => {
+const FormInput = ({
+  onChange,
+  value,
+  label,
+  id,
+  type,
+  errors,
+  touched,
+}: FormInputProps) => {
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray" htmlFor={id}>
-        {label}
-      </label>
-      <Input
-        id={id}
-        name={id}
-        type={type}
-        onChange={onChange}
-        value={value}
-        className="rounded-sm border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-primary"
-      />
+    <div>
+      <div className="flex flex-col gap-2">
+        <label className="text-sm text-gray" htmlFor={id}>
+          {label}
+        </label>
+        <Input
+          id={id}
+          name={id}
+          type={type}
+          onChange={onChange}
+          value={value}
+          className="rounded-sm border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-primary"
+        />
+      </div>
+      <p className="text-red-500 text-[12px] h-3">{touched && errors}</p>
     </div>
   );
 };
 
 export const Form = () => {
-  const formik = useFormik<FormType>({
-    initialValues: {
-      name: "",
-      department: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-      // ここでフォームの送信処理を実装します
-      formik.resetForm();
-    },
-    validationSchema: { SIGNUP_SCHEMA },
-  });
   return (
-    <form className="flex flex-col gap-4 py-4" onSubmit={formik.handleSubmit}>
-      <FormInput
-        onChange={formik.handleChange}
-        value={formik.values.name}
-        label="名前"
-        id="name"
-        type="text"
-      />
-      {formik.errors.name && (
-        <p className="text-red-500 text-sm">{formik.errors.name}</p>
+    <Formik<FormType>
+      initialValues={{
+        name: "",
+        department: "",
+        password: "",
+      }}
+      onSubmit={(values) => {
+        console.log(values);
+      }}
+      validationSchema={SIGNUP_SCHEMA}
+    >
+      {({ errors, touched, handleChange, values }) => (
+        <FormikForm className="flex flex-col gap-4 py-4">
+          <FormInput
+            onChange={handleChange}
+            value={values.name}
+            label="名前"
+            id="name"
+            type="text"
+            errors={errors.name}
+            touched={touched.name}
+          />
+
+          <FormInput
+            onChange={handleChange}
+            value={values.department}
+            label="部署"
+            id="department"
+            type="text"
+            errors={errors.department}
+            touched={touched.department}
+          />
+          <FormInput
+            onChange={handleChange}
+            value={values.password}
+            label="パスワード"
+            id="password"
+            type="password"
+            errors={errors.password}
+            touched={touched.password}
+          />
+          <div className="flex justify-end pt-2">
+            <Button type="submit" className="font-bold">
+              入会する
+            </Button>
+          </div>
+        </FormikForm>
       )}
-      <FormInput
-        onChange={formik.handleChange}
-        value={formik.values.department}
-        label="部署"
-        id="department"
-        type="text"
-      />
-      <FormInput
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        label="パスワード"
-        id="password"
-        type="password"
-      />
-      <div className="flex justify-end pt-2">
-        <Button type="submit" className="font-bold">
-          入会する
-        </Button>
-      </div>
-    </form>
+    </Formik>
   );
 };
