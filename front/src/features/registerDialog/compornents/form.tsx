@@ -29,7 +29,11 @@ const FormInput = ({
   return (
     <div>
       <div className="flex flex-col gap-2">
-        <label className="text-sm text-gray" htmlFor={id}>
+        <label
+          className="text-sm text-gray"
+          htmlFor={id}
+          aria-invalid={Boolean(touched && errors)}
+        >
           {label}
         </label>
         <Input
