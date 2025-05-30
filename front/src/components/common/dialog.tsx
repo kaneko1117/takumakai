@@ -16,7 +16,7 @@ type Props = {
 };
 
 const dialogVariants = cva(
-  "py-2 px-4 py-2 px-4 rounded-sm shadow-sm cursor-pointer font-bold",
+  "py-2 px-4 rounded-sm shadow-sm cursor-pointer font-bold",
   {
     variants: {
       variant: {
