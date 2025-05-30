@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/features/header";
 import { Footer } from "@/features/footer";
+import { LoginDialog } from "@/features/loginDialog";
 
 export const metadata: Metadata = {
   title: "琢磨会",
@@ -19,7 +20,9 @@ export default function RootLayout({
       <body>
         <div className="mx-auto!important">
           <div className="pb-[78px]">
-            <Header />
+            <Header>
+              <LoginDialog />
+            </Header>
             <div className="p-4 h-full">{children}</div>
           </div>
           <Footer />

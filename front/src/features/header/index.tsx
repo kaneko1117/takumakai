@@ -1,9 +1,15 @@
+import { ReactNode } from "react";
 import { Logo } from "./components/logo";
 
-export const Header = () => {
+type Props = {
+  children: ReactNode;
+};
+
+export const Header = ({ children }: Props) => {
   return (
     <header className="h-20 flex justify-center items-center w-full">
       <Logo />
+      {children}
     </header>
   );
 };
