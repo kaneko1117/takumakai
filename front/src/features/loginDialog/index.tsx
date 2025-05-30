@@ -1,9 +1,10 @@
+"use client";
 import { Dialog } from "@/components/common/dialog";
 import { Form } from "./components/form";
 
-export const RegisterDialog = () => {
+export const LoginDialog = () => {
   return (
-    <Dialog title="入会" variant="register">
+    <Dialog title="ログイン" variant="login">
       <Form />
     </Dialog>
   );
