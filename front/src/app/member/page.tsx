@@ -1,8 +1,8 @@
-import { MemberCard } from "@/features/memberCard";
-import { MemberCardType } from "@/features/memberCard/type";
+import { Profile } from "@/features/profile";
+import { ProfileType } from "@/features/profile/type";
 import { RegisterDialog } from "@/features/registerDialog";
 
-const TEST_DATA: MemberCardType[] = [
+const TEST_DATA: ProfileType[] = [
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",
@@ -64,7 +64,7 @@ export default function Member() {
       </div>
 
       {TEST_DATA.map((data, index) => (
-        <MemberCard key={index} data={data} />
+        <Profile key={index} data={data} />
       ))}
     </div>
   );

@@ -4,13 +4,13 @@ import {
   AvatarImage,
 } from "@/components/shadcn/avatar";
 import { Card, CardContent } from "@/components/shadcn/card";
-import { MemberCardType } from "./type";
+import { ProfileType } from "./type";
 
 type Props = {
-  data: MemberCardType;
+  data: ProfileType;
 };
 
-export const MemberCard = ({ data }: Props) => {
+export const Profile = ({ data }: Props) => {
   return (
     <Card className="w-full border-none shadow-none p-2">
       <CardContent className="flex items-center justify-left gap-2 px-0">
