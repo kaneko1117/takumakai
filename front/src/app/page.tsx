@@ -6,25 +6,25 @@ const TEST_DATA: RankingCardType[] = [
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",
-    type: "平均ポイント",
+    type: "averagePoints",
     value: 123,
   },
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",
-    type: "平均順位",
+    type: "averagePlace",
     value: 2.23,
   },
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",
-    type: "ベストスコア",
+    type: "bestScore",
     value: 85000,
   },
   {
     name: "琢磨さん",
     imageUrl: "https://github.com/shadcn.png",
-    type: "平均スコア",
+    type: "averageScore",
     value: 32000,
   },
 ];

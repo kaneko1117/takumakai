@@ -8,10 +8,10 @@ import {
   PolarRadiusAxis,
   Tooltip,
 } from "recharts";
-import { RankingChart } from "../type";
+import { RankingChartType } from "../type";
 
 type Props = {
-  data: RankingChart[];
+  data: RankingChartType[];
 };
 
 export default function Chart({ data }: Props) {

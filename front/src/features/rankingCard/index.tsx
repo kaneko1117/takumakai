@@ -5,6 +5,7 @@ import {
 } from "@/components/shadcn/avatar";
 import { Card, CardContent } from "@/components/shadcn/card";
 import { RankingCardType } from "./type";
+import { handleType, handleUnit } from "./helper";
 
 type Props = {
   data: RankingCardType;
@@ -21,8 +22,9 @@ export const RankingCard = ({ data }: Props) => {
         <div className="flex flex-col items-center justify-center gap-1">
           <p className="text-lg font-bold">{data.name}</p>
           <p className="text-xs text-gray">
-            {data.type}
-            <span className="text-primary text-base ml-1">{data.value}</span>
+            {handleType(data.type)}
+            <span className="text-primary text-base mx-1">{data.value}</span>
+            {handleUnit(data.type)}
           </p>
         </div>
       </CardContent>
