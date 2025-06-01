@@ -4,8 +4,10 @@ import { Form } from "./components/form";
 
 export const LoginDialog = () => {
   return (
-    <Dialog title="ログイン" variant="login">
-      <Form />
-    </Dialog>
+    <div className="pr-4">
+      <Dialog title="ログイン" variant="login">
+        <Form />
+      </Dialog>
+    </div>
   );
 };
