@@ -1,3 +1,1 @@
 # takumakai
-
-# テスト
