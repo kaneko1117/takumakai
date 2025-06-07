@@ -5,7 +5,6 @@ import {
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Tooltip,
 } from "recharts";
 import { RankingChartType } from "../type";
@@ -20,7 +19,6 @@ export default function Chart({ data }: Props) {
       <Tooltip />
       <PolarGrid />
       <PolarAngleAxis dataKey="subject" />
-      <PolarRadiusAxis angle={90} domain={[0, 1]} fontSize={10} />
       <Radar
         dataKey="percentage"
         stroke="#00c950"

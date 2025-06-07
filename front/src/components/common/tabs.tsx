@@ -14,8 +14,8 @@ type Props = {
 
 export const Tabs = ({ results, analysis, recentGames }: Props) => {
   return (
-    <RootTabs defaultValue="account" className="w-full">
-      <TabsList>
+    <RootTabs defaultValue="results" className="w-full">
+      <TabsList className="w-full justify-center">
         <TabsTrigger value="results">成績</TabsTrigger>
         <TabsTrigger value="analysis">分析</TabsTrigger>
         <TabsTrigger value="recentGames">最近の対局</TabsTrigger>
