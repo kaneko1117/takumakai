@@ -7,7 +7,7 @@ import { RankingChartType } from "@/features/rankingChart/type";
 
 type DataType = {
   results: DetailCardType[];
-  chart: RankingChartType[];
+  analysis: RankingChartType[];
 };
 
 const TEST_DATA: DataType = {
@@ -29,7 +29,7 @@ const TEST_DATA: DataType = {
       value: 32000,
     },
   ],
-  chart: [
+  analysis: [
     {
       subject: "ラス回避率",
       percentage: 0.9,
@@ -59,7 +59,7 @@ export default function MemberDetail() {
         }
         analysis={
           <div className="flex flex-col items-center justify-center gap-2">
-            <RankingChart data={TEST_DATA.chart} />
+            <RankingChart data={TEST_DATA.analysis} />
           </div>
         }
         recentGames={
