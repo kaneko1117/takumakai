@@ -14,7 +14,7 @@ export const DetailCard = ({ data }: Props) => {
           {handleType(data.type)}
           <span>{handleIcon(data.type)}</span>
         </p>
-        <p className="text-xl font-bold">
+        <p className="text-xl font-bold text-primary">
           {data.value}
           <span className="text-sm text-gray ml-1">
             {handleUnit(data.type)}

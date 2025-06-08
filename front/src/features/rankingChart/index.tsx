@@ -25,7 +25,7 @@ const DynamicChart = dynamic(() => import("./components/chart"), {
 export const RankingChart = () => {
   return (
     <>
-      <Card>
+      <Card data={data}>
         <div className="absolute top-8">
           <DynamicChart data={data} />
         </div>

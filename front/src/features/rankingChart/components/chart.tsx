@@ -15,7 +15,7 @@ type Props = {
 
 export default function Chart({ data }: Props) {
   return (
-    <RadarChart width={400} height={300} data={data}>
+    <RadarChart width={350} height={300} data={data}>
       <Tooltip />
       <PolarGrid />
       <PolarAngleAxis dataKey="subject" />

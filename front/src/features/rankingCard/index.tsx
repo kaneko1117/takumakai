@@ -19,13 +19,17 @@ export const RankingCard = ({ data }: Props) => {
           <AvatarImage src={data.imageUrl} className="w-20 h-20" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <div className="flex flex-col items-center justify-center gap-1">
+        <div className="flex flex-col items-center justify-center gap-2">
           <p className="text-lg font-bold">{data.name}</p>
-          <p className="text-xs text-gray">
-            {handleType(data.type)}
-            <span className="text-primary text-base mx-1">{data.value}</span>
-            {handleUnit(data.type)}
-          </p>
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-xs text-gray">{handleType(data.type)}</p>
+            <div>
+              <span className="text-primary text-base mx-1 font-bold">
+                {data.value}
+              </span>
+              {handleUnit(data.type)}
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>
