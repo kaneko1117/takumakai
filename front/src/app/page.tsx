@@ -1,6 +1,7 @@
 import { RankingCard } from "@/features/rankingCard";
 import { RankingCardType } from "@/features/rankingCard/type";
 import { RankingChart } from "@/features/rankingChart";
+import { RankingChartType } from "@/features/rankingChart/type";
 
 const TEST_DATA: RankingCardType[] = [
   {
@@ -29,6 +30,21 @@ const TEST_DATA: RankingCardType[] = [
   },
 ];
 
+const RANKING_TEST_DATA: RankingChartType[] = [
+  {
+    subject: "ラス回避率",
+    percentage: 0.9,
+  },
+  {
+    subject: "連対率",
+    percentage: 0.63,
+  },
+  {
+    subject: "トップ率",
+    percentage: 0.33,
+  },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -37,7 +53,7 @@ export default function Home() {
           <RankingCard key={index} data={data} />
         ))}
       </div>
-      <RankingChart />
+      <RankingChart data={RANKING_TEST_DATA} />
     </div>
   );
 }

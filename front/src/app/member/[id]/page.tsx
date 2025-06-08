@@ -2,9 +2,12 @@ import { Tabs } from "@/components/common/tabs";
 import { DetailCard } from "@/features/detailCard";
 import { DetailCardType } from "@/features/detailCard/type";
 import { Profile } from "@/features/profile/pages/detailMember";
+import { RankingChart } from "@/features/rankingChart";
+import { RankingChartType } from "@/features/rankingChart/type";
 
 type DataType = {
   results: DetailCardType[];
+  chart: RankingChartType[];
 };
 
 const TEST_DATA: DataType = {
@@ -26,6 +29,20 @@ const TEST_DATA: DataType = {
       value: 32000,
     },
   ],
+  chart: [
+    {
+      subject: "ラス回避率",
+      percentage: 0.9,
+    },
+    {
+      subject: "連対率",
+      percentage: 0.63,
+    },
+    {
+      subject: "トップ率",
+      percentage: 0.33,
+    },
+  ],
 };
 
 export default function MemberDetail() {
@@ -42,8 +59,7 @@ export default function MemberDetail() {
         }
         analysis={
           <div className="flex flex-col items-center justify-center gap-2">
-            <p className="text-lg font-bold">分析結果</p>
-            <p className="text-gray">詳細な分析は近日公開予定です。</p>
+            <RankingChart data={TEST_DATA.chart} />
           </div>
         }
         recentGames={
