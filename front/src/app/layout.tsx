@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/features/header";
 import { Footer } from "@/features/footer";
-import { LoginDialog } from "@/features/loginDialog";
+import { LoginDialog } from "@/detail/login/controller/UI";
 
 export const metadata: Metadata = {
   title: "琢磨会",

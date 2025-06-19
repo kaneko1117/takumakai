@@ -1,10 +1,14 @@
 import { Formik, Form as FormikForm } from "formik";
-import { FormType } from "../type";
-import { LOGIN_SCHEMA } from "../const";
+import { FormType } from "@/core/usecase/login/login";
+import { LOGIN_SCHEMA } from "../../../../../features/loginDialog/const";
 import { FormInput } from "@/components/common/formInput";
 import { Button } from "@/components/shadcn/button";
 
-export const Form = () => {
+type Props = {
+  onSubmit: (values: FormType) => void;
+};
+
+export const Form = ({ onSubmit }: Props) => {
   return (
     <Formik<FormType>
       initialValues={{
@@ -12,7 +16,7 @@ export const Form = () => {
         password: "",
       }}
       onSubmit={(values, helpers) => {
-        console.log(values);
+        onSubmit(values);
         helpers.resetForm();
       }}
       validationSchema={LOGIN_SCHEMA}
