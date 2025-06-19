@@ -1,29 +1,40 @@
 import {
+  User,
   UserValidation,
   UserValidationMethods,
-} from "@/core/domain/users/model";
+} from "@/core/entity/users/model";
 
 type ObjectsKeyExclude<T extends object, K extends keyof T> = {
   [P in Exclude<keyof T, K>]: T[P];
 };
-type LoginUseCase = {
-  loginValidation: () => ObjectsKeyExclude<UserValidationMethods, "isUserID">;
-  loginFetch: () => void;
-};
 
-const loginValidation = (): ObjectsKeyExclude<
+type LoginValidation = ObjectsKeyExclude<
   UserValidationMethods,
-  "isUserID"
-> => {
+  "userIDValidation"
+>;
+
+export type FormType = Pick<User, "name" | "password">;
+
+// UseCaseの型定義
+export interface ILoginUseCase {
+  loginValidation: () => LoginValidation;
+  login: (data: FormType) => Promise<void>;
+}
+
+export interface ILoginRepository {
+  login: (data: FormType) => Promise<void>;
+}
+
+const loginValidation = (): LoginValidation => {
   return {
-    isUserName: UserValidation.isUserName,
-    isPassword: UserValidation.isPassword,
+    userNameValidation: UserValidation.userNameValidation,
+    passwordValidation: UserValidation.passwordValidation,
   };
 };
 
-const loginFetch = () => {};
-
-export const LoginUseCase: LoginUseCase = {
-  loginValidation,
-  loginFetch,
+export const loginUseCase = (repo: ILoginRepository): ILoginUseCase => {
+  return {
+    loginValidation: loginValidation,
+    login: repo.login,
+  };
 };
