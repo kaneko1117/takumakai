@@ -34,3 +34,59 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# クリーンアーキテクチャにおける各層の説明
+
+## 各層の依存関係図
+
+```mermaid
+graph TD
+  UI[UI層 (presentation)]
+  Controller[Controller層 (hooks, UI logic)]
+  Usecase[Usecase層 (ユースケース, ビジネスロジック, validation)]
+  Core[Core層 (Entity, Model, ドメイン)]
+  RepoInterface[Repository Interface (Usecase内で定義)]
+  DetailRepo[Detail層 (Repository, インフラ実装)]
+
+  UI --> Controller
+  Controller --> Usecase
+  Usecase --> RepoInterface
+  RepoInterface <-- Repo
+  Usecase --> Core
+```
+
+## 各層の説明
+
+- **core/usecase**
+
+  - アプリケーション固有のビジネスロジックやバリデーションを担当。
+  - Repository のインターフェースを定義し、外部依存を排除。
+  - 例: `core/usecase/login/login.ts`。
+
+- **core/entity**
+
+  - ドメインモデルやエンティティ、バリューオブジェクトなど純粋なビジネスルールを記述。
+  - 例: `core/entity/users/model.ts`。
+
+- **detail/controller**
+
+  - UI 層と usecase 層の橋渡し。
+  - hooks や UI ロジックを記述。
+  - 例: `detail/login/controller/hooks/useLoginController.tsx`。
+
+- **detail/repository**
+
+  - usecase 層で定義された Repository インターフェースを実装。
+  - API 通信や DB アクセスなどインフラ依存の処理を担当。
+  - 例: `detail/login/repository/index.tsx`。
+
+- **detail/UI**
+  - 画面表示やユーザー入力の受け取りを担当。
+  - UI コンポーネントやページを配置。
+  - 例: `detail/login/UI/index.tsx`, `detail/login/UI/components/form.tsx`。
+
+## ポイント
+
+- 内側の層ほどビジネスロジックに集中し、外側の技術的な変更に影響されにくい設計です。
+- 依存関係は必ず内側（Core）に向かい、外側（UI やインフラ）は内側の詳細を知らないようにします。
+- これにより、UI やインフラの変更がビジネスロジックに波及しにくくなります。
