@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profileRepository } from "@/detail/profile/repository";
 import { Profile as RootProfile } from "../components";
 import { profileUseCase } from "@/core/usecase/profile";
@@ -9,7 +10,9 @@ export const Profile = async () => {
   const { fetcher } = getProfileController(useCase);
   const TEST_DATA = await fetcher();
 
-  return TEST_DATA.map((data, index) => (
-    <RootProfile key={index} data={data} variant="member" />
+  return TEST_DATA.map((data) => (
+    <Link key={data.id} href={`/member/${data.id}`}>
+      <RootProfile data={data} variant="member" />
+    </Link>
   ));
 };

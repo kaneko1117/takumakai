@@ -9,6 +9,6 @@ export const Profile = async () => {
   const { fetcher } = getProfileController(useCase);
   const TEST_DATA = await fetcher();
   return TEST_DATA.map((data) => {
-    return <RootProfile key={data.id} data={data} variant="detail" />;
+    return <RootProfile data={data} key={data.id} variant="detail" />;
   });
 };
