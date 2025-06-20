@@ -1,12 +1,16 @@
 "use client";
 
 import { Formik, Form as FormikForm } from "formik";
-import { FormType } from "../type";
+import { FormType, signupUseCase } from "@/core/usecase/signup";
 import { Button } from "@/components/shadcn/button";
-import { SIGNUP_SCHEMA } from "../const";
 import { FormInput } from "@/components/common/formInput";
+import { signupRepository } from "@/detail/signup/repository";
+import { useSignupController } from "../../hooks/useSignupController";
 
 export const Form = () => {
+  const repo = signupRepository;
+  const useCase = signupUseCase(repo);
+  const { validate, fetcher: onSubmit } = useSignupController(useCase);
   return (
     <Formik<FormType>
       initialValues={{
@@ -15,10 +19,10 @@ export const Form = () => {
         password: "",
       }}
       onSubmit={(values, helpers) => {
-        console.log(values);
+        onSubmit(values);
         helpers.resetForm();
       }}
-      validationSchema={SIGNUP_SCHEMA}
+      validate={validate}
     >
       {({ errors, touched, handleChange, values }) => (
         <FormikForm className="flex flex-col gap-4 py-4">
