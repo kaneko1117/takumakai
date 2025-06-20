@@ -1,14 +1,14 @@
-import { Formik, Form as FormikForm } from "formik";
+import { Formik, FormikErrors, Form as FormikForm } from "formik";
 import { FormType } from "@/core/usecase/login/login";
-import { LOGIN_SCHEMA } from "../../../../../features/loginDialog/const";
 import { FormInput } from "@/components/common/formInput";
 import { Button } from "@/components/shadcn/button";
 
 type Props = {
   onSubmit: (values: FormType) => void;
+  validate: (values: FormType) => FormikErrors<FormType>;
 };
 
-export const Form = ({ onSubmit }: Props) => {
+export const Form = ({ onSubmit, validate }: Props) => {
   return (
     <Formik<FormType>
       initialValues={{
@@ -19,7 +19,7 @@ export const Form = ({ onSubmit }: Props) => {
         onSubmit(values);
         helpers.resetForm();
       }}
-      validationSchema={LOGIN_SCHEMA}
+      validate={validate}
     >
       {({ errors, touched, handleChange, values }) => (
         <FormikForm className="flex flex-col gap-4 py-4">

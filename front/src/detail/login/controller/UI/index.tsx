@@ -8,11 +8,11 @@ import { useLoginController } from "../hooks/useLoginController";
 export const LoginDialog = () => {
   const repo = loginRepository;
   const useCase = loginUseCase(repo);
-  const { fetcher } = useLoginController(useCase);
+  const { fetcher, validate } = useLoginController(useCase);
   return (
     <div className="pr-4">
       <Dialog title="ログイン" variant="login">
-        <Form onSubmit={fetcher} />
+        <Form onSubmit={fetcher} validate={validate} />
       </Dialog>
     </div>
   );
