@@ -3,14 +3,11 @@ import {
   UserValidation,
   UserValidationMethods,
 } from "@/core/entity/users/model";
+import { ObjectsKeyExtract } from "../_helper/type";
 
-type ObjectsKeyExclude<T extends object, K extends keyof T> = {
-  [P in Exclude<keyof T, K>]: T[P];
-};
-
-type LoginValidation = ObjectsKeyExclude<
+type LoginValidation = ObjectsKeyExtract<
   UserValidationMethods,
-  "userIDValidation"
+  "userNameValidation" | "passwordValidation"
 >;
 
 export type FormType = Pick<User, "name" | "password">;

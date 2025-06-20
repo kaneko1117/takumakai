@@ -1,5 +1,5 @@
-import { ILoginRepository } from "@/core/usecase/login/login";
-import { FormType } from "@/core/usecase/login/login";
+import { ILoginRepository } from "@/core/usecase/login";
+import { FormType } from "@/core/usecase/login";
 
 const login = async (data: FormType): Promise<void> => {
   // Simulate a login request

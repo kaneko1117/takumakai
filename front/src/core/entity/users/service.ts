@@ -26,3 +26,13 @@ export const passwordValidation = (password: string): string => {
   }
   return "";
 };
+
+export const departmentValidation = (department: string): string => {
+  if (!department) {
+    return "部署は必須です";
+  }
+  if (department.length > 20) {
+    return "部署は20文字以内で入力してください";
+  }
+  return "";
+};

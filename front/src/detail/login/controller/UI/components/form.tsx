@@ -1,5 +1,5 @@
 import { Formik, FormikErrors, Form as FormikForm } from "formik";
-import { FormType } from "@/core/usecase/login/login";
+import { FormType } from "@/core/usecase/login";
 import { FormInput } from "@/components/common/formInput";
 import { Button } from "@/components/shadcn/button";
 

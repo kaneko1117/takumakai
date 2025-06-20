@@ -1,4 +1,4 @@
-import { ILoginUseCase, FormType } from "@/core/usecase/login/login";
+import { ILoginUseCase, FormType } from "@/core/usecase/login";
 import { FormikErrors } from "formik";
 
 export const useLoginController = (useCase: ILoginUseCase) => {

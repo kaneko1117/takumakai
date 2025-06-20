@@ -1,7 +1,7 @@
 import { Tabs } from "@/components/common/tabs";
 import { DetailCard } from "@/features/detailCard";
 import { DetailCardType } from "@/features/detailCard/type";
-import { Profile } from "@/features/profile/pages/detailMember";
+import { Profile } from "@/detail/profile/controller/UI/pages/detailMember";
 import { RankingChart } from "@/features/rankingChart";
 import { RankingChartType } from "@/features/rankingChart/type";
 

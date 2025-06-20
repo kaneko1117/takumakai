@@ -2,6 +2,7 @@ import {
   passwordValidation,
   userIDValidation,
   userNameValidation,
+  departmentValidation,
 } from "./service";
 
 // Userのドメインモデル
@@ -18,10 +19,12 @@ export type UserValidationMethods = {
   userIDValidation: (id: string) => string;
   userNameValidation: (name: string) => string;
   passwordValidation: (password: string) => string;
+  departmentValidation: (department: string) => string;
 };
 
 export const UserValidation: UserValidationMethods = {
   userIDValidation,
   userNameValidation,
   passwordValidation,
+  departmentValidation,
 };

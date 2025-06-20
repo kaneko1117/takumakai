@@ -2,7 +2,7 @@
 import { Dialog } from "@/components/common/dialog";
 import { Form } from "./components/form";
 import { loginRepository } from "../../repository";
-import { loginUseCase } from "@/core/usecase/login/login";
+import { loginUseCase } from "@/core/usecase/login";
 import { useLoginController } from "../hooks/useLoginController";
 
 export const LoginDialog = () => {

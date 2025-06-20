@@ -4,7 +4,7 @@ import {
   AvatarImage,
 } from "@/components/shadcn/avatar";
 import { Card, CardContent } from "@/components/shadcn/card";
-import { ProfileType } from "../type";
+import { ProfileType } from "@/core/usecase/profile";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 

@@ -1,4 +1,4 @@
-import { Profile } from "@/features/profile/pages/member";
+import { Profile } from "@/detail/profile/controller/UI/pages/member";
 import { RegisterDialog } from "@/features/registerDialog";
 
 export default function Member() {
