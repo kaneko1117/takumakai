@@ -15,14 +15,14 @@ export type User = {
   department: string;
 };
 
-export type UserValidationMethods = {
+export type UserMethodsType = {
   userIDValidation: (id: string) => string;
   userNameValidation: (name: string) => string;
   passwordValidation: (password: string) => string;
   departmentValidation: (department: string) => string;
 };
 
-export const UserValidation: UserValidationMethods = {
+export const UserMethods: UserMethodsType = {
   userIDValidation,
   userNameValidation,
   passwordValidation,

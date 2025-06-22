@@ -1,12 +1,8 @@
-import {
-  User,
-  UserValidation,
-  UserValidationMethods,
-} from "@/core/entity/users/model";
+import { User, UserMethods, UserMethodsType } from "@/core/entity/users/model";
 import { ObjectsKeyExtract } from "../_helper/type";
 
 type SignupValidation = ObjectsKeyExtract<
-  UserValidationMethods,
+  UserMethodsType,
   "userNameValidation" | "passwordValidation" | "departmentValidation"
 >;
 
@@ -23,9 +19,9 @@ export interface ISignupRepository {
 
 const signupValidation = (): SignupValidation => {
   return {
-    userNameValidation: UserValidation.userNameValidation,
-    passwordValidation: UserValidation.passwordValidation,
-    departmentValidation: UserValidation.departmentValidation,
+    userNameValidation: UserMethods.userNameValidation,
+    passwordValidation: UserMethods.passwordValidation,
+    departmentValidation: UserMethods.departmentValidation,
   };
 };
 
