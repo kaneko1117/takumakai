@@ -1,9 +1,9 @@
 import { Tabs } from "@/components/common/tabs";
-import { DetailCard } from "@/features/detailCard";
 import { DetailCardType } from "@/features/detailCard/type";
 import { Profile } from "@/detail/profile/controller/UI/pages/detailMember";
 import { RankingChart } from "@/features/rankingChart";
 import { RankingChartType } from "@/features/rankingChart/type";
+import { Performance } from "@/detail/mahjongPerformance/UI/server";
 
 type DataType = {
   results: DetailCardType[];
@@ -52,9 +52,7 @@ export default function MemberDetail() {
       <Tabs
         results={
           <div className="grid grid-cols-2 gap-2 w-full">
-            {TEST_DATA.results.map((data, index) => (
-              <DetailCard key={index} data={data} />
-            ))}
+            <Performance />
           </div>
         }
         analysis={

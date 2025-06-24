@@ -6,7 +6,7 @@ export const getTopPerformance = async (
   const fetcher = useCase.getTopMahjongPerformance;
   const performanceData = await fetcher();
   if (!performanceData || performanceData.length === 0) {
-    throw new Error("No performance data found");
+    throw new Error("No Top performance data found");
   }
 
   return { performanceData };

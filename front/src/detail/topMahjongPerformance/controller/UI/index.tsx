@@ -8,7 +8,7 @@ import {
   ITopMahjongPerformanceUseCase,
   TopMahjongPerformanceType,
 } from "@/core/usecase/topMahjongPerformance";
-import { useMahjongPerformanceController } from "../hooks/useMahjongPerformanceController";
+import { useTopMahjongPerformanceController } from "../hooks/useTopMahjongPerformanceController";
 
 type Props = {
   data: TopMahjongPerformanceType;
@@ -16,7 +16,10 @@ type Props = {
 };
 
 export const RankingCard = ({ data, useCase }: Props) => {
-  const { unitAndType } = useMahjongPerformanceController(useCase, data.type);
+  const { unitAndType } = useTopMahjongPerformanceController(
+    useCase,
+    data.type
+  );
   return (
     <Card className="base-1/2">
       <CardContent className="flex flex-col items-center justify-center gap-4">

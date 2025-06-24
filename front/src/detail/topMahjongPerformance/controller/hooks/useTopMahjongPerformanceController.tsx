@@ -1,6 +1,6 @@
 import { ITopMahjongPerformanceUseCase } from "@/core/usecase/topMahjongPerformance";
 
-export const useMahjongPerformanceController = (
+export const useTopMahjongPerformanceController = (
   useCase: ITopMahjongPerformanceUseCase,
   type: string
 ) => {
