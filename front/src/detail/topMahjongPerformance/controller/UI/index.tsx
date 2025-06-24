@@ -4,14 +4,19 @@ import {
   AvatarImage,
 } from "@/components/shadcn/avatar";
 import { Card, CardContent } from "@/components/shadcn/card";
-import { RankingCardType } from "./type";
-import { handleType, handleUnit } from "./helper";
+import {
+  ITopMahjongPerformanceUseCase,
+  TopMahjongPerformanceType,
+} from "@/core/usecase/topMahjongPerformance";
+import { useMahjongPerformanceController } from "../hooks/useMahjongPerformanceController";
 
 type Props = {
-  data: RankingCardType;
+  data: TopMahjongPerformanceType;
+  useCase: ITopMahjongPerformanceUseCase;
 };
 
-export const RankingCard = ({ data }: Props) => {
+export const RankingCard = ({ data, useCase }: Props) => {
+  const { unitAndType } = useMahjongPerformanceController(useCase, data.type);
   return (
     <Card className="base-1/2">
       <CardContent className="flex flex-col items-center justify-center gap-4">
@@ -22,12 +27,12 @@ export const RankingCard = ({ data }: Props) => {
         <div className="flex flex-col items-center justify-center gap-2">
           <p className="text-lg font-bold">{data.name}</p>
           <div className="flex flex-col items-center justify-center">
-            <p className="text-xs text-gray">{handleType(data.type)}</p>
+            <p className="text-xs text-gray">{unitAndType.type}</p>
             <div>
               <span className="text-primary text-base mx-1 font-bold">
-                {data.value}
+                {data.score}
               </span>
-              {handleUnit(data.type)}
+              {unitAndType.unit}
             </div>
           </div>
         </div>
