@@ -1,14 +1,26 @@
 import {
   MahjongPerformanceUnitAndType,
   handleMahjongPerformance,
+  handleMahjongPlayStyleSubject,
 } from "./service";
 
-type PlayStyleSubjectType = "last_avoidance_rate" | "top_2_rate" | "top_rate";
+export type MahjongPlayStyleSubjectType =
+  | "last_avoidance_rate"
+  | "top_2_rate"
+  | "top_rate";
 
 export type MahjongPlayStyle = {
   id: string;
-  subject: PlayStyleSubjectType;
+  subject: MahjongPlayStyleSubjectType;
   percentage: number;
+};
+
+export type MahjongPlayStyleMethodsType = {
+  handleMahjongPlayStyleSubject: (subject: string) => string;
+};
+
+export const MahjongPlayStyleMethods: MahjongPlayStyleMethodsType = {
+  handleMahjongPlayStyleSubject,
 };
 
 export type MahjongPerformanceType =

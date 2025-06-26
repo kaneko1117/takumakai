@@ -40,3 +40,22 @@ export const handleMahjongPerformance = (
     type: "",
   };
 };
+
+const MAHJONG_PLAY_STYLE_SUBJECT_MAP: Record<string, string> = {
+  last_avoidance_rate: "ラス回避率",
+  top_2_rate: "連対率",
+  top_rate: "トップ率",
+};
+
+const isMahjongPlayStyleSubject = (
+  subject: string
+): subject is keyof typeof MAHJONG_PLAY_STYLE_SUBJECT_MAP => {
+  return Object.keys(MAHJONG_PLAY_STYLE_SUBJECT_MAP).includes(subject);
+};
+
+export const handleMahjongPlayStyleSubject = (subject: string): string => {
+  if (isMahjongPlayStyleSubject(subject)) {
+    return MAHJONG_PLAY_STYLE_SUBJECT_MAP[subject];
+  }
+  return "";
+};
