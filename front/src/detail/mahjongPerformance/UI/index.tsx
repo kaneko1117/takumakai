@@ -6,7 +6,7 @@ import {
 import { useMahjongPerformanceController } from "../controller/hooks/useMahjongPerformanceController";
 
 type Props = {
-  data: MahjongPerformanceType;
+  data: MahjongPerformanceType["performance"][number];
   useCase: IMahjongPerformanceUseCase;
 };
 
@@ -23,7 +23,7 @@ export const DetailCard = ({ data, useCase }: Props) => {
           <span>{icon}</span>
         </p>
         <p className="text-xl font-bold text-primary">
-          {data.score}
+          {data.value}
           <span className="text-sm text-gray ml-1">{unitAndType.unit}</span>
         </p>
       </CardContent>

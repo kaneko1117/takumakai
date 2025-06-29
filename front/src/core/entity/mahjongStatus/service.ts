@@ -1,17 +1,25 @@
 import { MahjongPerformanceType } from "./model";
 
-const MAHJONG_PERFORMANCE_UNIT_MAP: Record<MahjongPerformanceType, string> = {
+const MAHJONG_PERFORMANCE_UNIT_MAP: Record<
+  Exclude<MahjongPerformanceType, "point">,
+  string
+> = {
   averagePoints: "P",
   averagePlace: "位",
   averageScore: "点",
   bestScore: "点",
+  score: "点",
 };
 
-const MAHJONG_PERFORMANCE_TYPE_MAP: Record<MahjongPerformanceType, string> = {
+const MAHJONG_PERFORMANCE_TYPE_MAP: Record<
+  Exclude<MahjongPerformanceType, "point">,
+  string
+> = {
   averagePoints: "平均ポイント",
   averagePlace: "平均順位",
   averageScore: "平均スコア",
   bestScore: "ベストスコア",
+  score: "スコア",
 };
 
 // もう少し厳密にしたい
@@ -22,7 +30,7 @@ export type MahjongPerformanceUnitAndType = {
 
 const isMahjongPerformanceType = (
   type: string
-): type is MahjongPerformanceType => {
+): type is Exclude<MahjongPerformanceType, "point"> => {
   return Object.keys(MAHJONG_PERFORMANCE_UNIT_MAP).includes(type);
 };
 

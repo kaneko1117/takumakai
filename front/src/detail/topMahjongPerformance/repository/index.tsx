@@ -13,25 +13,25 @@ const getTopMahjongPerformance = async (): Promise<
           name: "琢磨さん",
           imageUrl: "https://github.com/shadcn.png",
           type: "averagePoints",
-          score: 123,
+          value: 123,
         },
         {
           name: "琢磨さん",
           imageUrl: "https://github.com/shadcn.png",
           type: "averagePlace",
-          score: 2.23,
+          value: 2.23,
         },
         {
           name: "琢磨さん",
           imageUrl: "https://github.com/shadcn.png",
           type: "bestScore",
-          score: 85000,
+          value: 85000,
         },
         {
           name: "琢磨さん",
           imageUrl: "https://github.com/shadcn.png",
           type: "averageScore",
-          score: 32000,
+          value: 32000,
         },
       ];
       resolve(performanceData);

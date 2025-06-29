@@ -27,12 +27,14 @@ export type MahjongPerformanceType =
   | "averagePoints"
   | "averagePlace"
   | "averageScore"
-  | "bestScore";
+  | "bestScore"
+  | "score"
+  | "point";
 
 export type MahjongPerformance = {
   id: string;
-  type: MahjongPerformanceType;
-  score: number;
+  performance: { type: MahjongPerformanceType; value: number }[];
+  date: string;
 };
 
 export type MahjongPerformanceMethodsType = {
