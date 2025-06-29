@@ -20,7 +20,7 @@ export default function MemberDetail() {
           </div>
         }
         recentGames={
-          <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex flex-col gap-2">
             <RecentGamesServer />
           </div>
         }
