@@ -11,16 +11,23 @@ type Props = {
 };
 
 export const RecentGames = ({ data }: Props) => {
+  const repo = mahjongRecentRepository;
+  const useCase = mahjongRecentGamesUseCase(repo);
+  const { handleSubject, handleComma, handlePoint } =
+    useMahjongRecentGamesController(useCase);
   return (
     <div className="flex flex-col gap-4">
       <p>{data.date}</p>
       <div className="flex">
         {data.performance.map((game, index) => (
-          <div>
-            {game.type === "score" && <div key={index}>{game.value}点</div>}
-            {game.type === "point" && (
-              <div key={index}>{game.value}ポイント</div>
+          <div key={index}>
+            {game.type === "score" && (
+              <div>
+                {handleComma(game.value)}
+                {handleSubject(game.type).unit}
+              </div>
             )}
+            {game.type === "point" && <div>{handlePoint(game.value)}</div>}
           </div>
         ))}
       </div>

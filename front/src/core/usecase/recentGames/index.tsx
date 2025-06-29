@@ -1,7 +1,7 @@
 import {
   MahjongPerformance,
-  MahjongPlayStyleMethods,
-  MahjongPlayStyleMethodsType,
+  MahjongPerformanceMethods,
+  MahjongPerformanceMethodsType,
 } from "@/core/entity/mahjongStatus/model";
 
 export type MahjongRecentGamesType = Pick<
@@ -10,7 +10,7 @@ export type MahjongRecentGamesType = Pick<
 >;
 
 export interface IMahjongRecentGamesUseCase {
-  mahjongRecentGamesMethods: MahjongPlayStyleMethodsType;
+  mahjongRecentGamesMethods: MahjongPerformanceMethodsType;
   getRecentGames: () => Promise<MahjongRecentGamesType[]>;
 }
 
@@ -22,7 +22,7 @@ export const mahjongRecentGamesUseCase = (
   repo: IMahjongRecentGamesRepository
 ): IMahjongRecentGamesUseCase => {
   return {
-    mahjongRecentGamesMethods: MahjongPlayStyleMethods,
+    mahjongRecentGamesMethods: MahjongPerformanceMethods,
     getRecentGames: repo.getRecentGames,
   };
 };

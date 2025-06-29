@@ -1,14 +1,13 @@
 import { IMahjongRecentGamesUseCase } from "@/core/usecase/recentGames";
 
 export const useMahjongRecentGamesController = (
-  useCase: IMahjongRecentGamesUseCase,
-  type: string
+  useCase: IMahjongRecentGamesUseCase
 ) => {
+  // hooksでmethodsの処理をしないと、ただ助長なhooksになってしまうのが痛い。
   const methods = useCase.mahjongRecentGamesMethods;
-  const unitAndType = methods.handleMahjongPlayStyleSubject(type);
-  if (!unitAndType) {
-    console.error(`Invalid type: ${type}`);
-  }
+  const handleSubject = methods.handleMahjongPerformance;
+  const handleComma = methods.formatNumberWithComma;
+  const handlePoint = methods.formatSignedNumber;
 
-  return { methods, unitAndType };
+  return { handleSubject, handleComma, handlePoint };
 };

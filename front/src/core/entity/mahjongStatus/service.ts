@@ -74,9 +74,9 @@ export const formatNumberWithComma = (num: number): string => {
 };
 
 // 正の整数なら+を付けて返す関数
-export const formatSignedNumber = (num: number): number => {
+export const formatSignedNumber = (num: number): string => {
   if (Number.isInteger(num) && num > 0) {
-    return +num;
+    return `+${num}`;
   }
-  return num;
+  return num.toString();
 };

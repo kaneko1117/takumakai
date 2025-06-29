@@ -19,14 +19,10 @@ export type MahjongPlayStyle = {
 
 export type MahjongPlayStyleMethodsType = {
   handleMahjongPlayStyleSubject: (subject: string) => string;
-  formatNumberWithComma: (num: number) => string;
-  formatSignedNumber: (num: number) => number;
 };
 
 export const MahjongPlayStyleMethods: MahjongPlayStyleMethodsType = {
   handleMahjongPlayStyleSubject,
-  formatNumberWithComma,
-  formatSignedNumber,
 };
 
 export type MahjongPerformanceType =
@@ -45,8 +41,12 @@ export type MahjongPerformance = {
 
 export type MahjongPerformanceMethodsType = {
   handleMahjongPerformance: (type: string) => MahjongPerformanceUnitAndType;
+  formatNumberWithComma: (num: number) => string;
+  formatSignedNumber: (num: number) => string;
 };
 
 export const MahjongPerformanceMethods: MahjongPerformanceMethodsType = {
   handleMahjongPerformance,
+  formatNumberWithComma,
+  formatSignedNumber,
 };
