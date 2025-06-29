@@ -2,6 +2,7 @@ import { Tabs } from "@/components/common/tabs";
 import { Profile } from "@/detail/profile/controller/UI/pages/detailMember";
 import { Performance } from "@/detail/mahjongPerformance/UI/server";
 import { PlayStyleServer } from "@/detail/mahjongPlayStyle/UI/server";
+import { RecentGamesServer } from "@/detail/recentGames/UI/server";
 
 export default function MemberDetail() {
   return (
@@ -20,8 +21,7 @@ export default function MemberDetail() {
         }
         recentGames={
           <div className="flex flex-col items-center justify-center gap-2">
-            <p className="text-lg font-bold">最近のゲーム</p>
-            <p className="text-gray">最近のゲームは近日公開予定です。</p>
+            <RecentGamesServer />
           </div>
         }
       />

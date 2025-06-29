@@ -67,3 +67,16 @@ export const handleMahjongPlayStyleSubject = (subject: string): string => {
   }
   return "";
 };
+
+// 数字にカンマを付ける関数
+export const formatNumberWithComma = (num: number): string => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
+// 正の整数なら+を付けて返す関数
+export const formatSignedNumber = (num: number): number => {
+  if (Number.isInteger(num) && num > 0) {
+    return +num;
+  }
+  return num;
+};

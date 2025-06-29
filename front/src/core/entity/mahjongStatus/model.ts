@@ -2,6 +2,8 @@ import {
   MahjongPerformanceUnitAndType,
   handleMahjongPerformance,
   handleMahjongPlayStyleSubject,
+  formatNumberWithComma,
+  formatSignedNumber,
 } from "./service";
 
 export type MahjongPlayStyleSubjectType =
@@ -17,10 +19,14 @@ export type MahjongPlayStyle = {
 
 export type MahjongPlayStyleMethodsType = {
   handleMahjongPlayStyleSubject: (subject: string) => string;
+  formatNumberWithComma: (num: number) => string;
+  formatSignedNumber: (num: number) => number;
 };
 
 export const MahjongPlayStyleMethods: MahjongPlayStyleMethodsType = {
   handleMahjongPlayStyleSubject,
+  formatNumberWithComma,
+  formatSignedNumber,
 };
 
 export type MahjongPerformanceType =
