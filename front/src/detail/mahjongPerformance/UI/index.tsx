@@ -6,15 +6,19 @@ import {
 import { useMahjongPerformanceController } from "../controller/hooks/useMahjongPerformanceController";
 
 type Props = {
-  data: MahjongPerformanceType["performance"][number];
+  data: MahjongPerformanceType;
   useCase: IMahjongPerformanceUseCase;
 };
 
-export const DetailCard = ({ data, useCase }: Props) => {
-  const { unitAndType, icon } = useMahjongPerformanceController(
-    useCase,
-    data.type
-  );
+const PerformanceCard = ({
+  useCase,
+  type,
+  value,
+}: Pick<Props, "useCase"> & {
+  type: keyof MahjongPerformanceType;
+  value: number;
+}) => {
+  const { unitAndType, icon } = useMahjongPerformanceController(useCase, type);
   return (
     <Card className="base-1/2">
       <CardContent className="flex flex-col justify-left gap-2">
@@ -23,10 +27,27 @@ export const DetailCard = ({ data, useCase }: Props) => {
           <span>{icon}</span>
         </p>
         <p className="text-xl font-bold text-primary">
-          {data.value}
+          {value}
           <span className="text-sm text-gray ml-1">{unitAndType.unit}</span>
         </p>
       </CardContent>
     </Card>
   );
+};
+
+export const DetailCard = ({ data, useCase }: Props) => {
+  const performanceType: Array<keyof MahjongPerformanceType> = [
+    "averagePlace",
+    "averageScore",
+    "averagePoints",
+    "bestScore",
+  ];
+  return performanceType.map((type) => (
+    <PerformanceCard
+      key={type}
+      useCase={useCase}
+      type={type}
+      value={data[type]}
+    />
+  ));
 };

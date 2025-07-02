@@ -6,7 +6,7 @@ import {
 
 export type MahjongRecentGamesType = Pick<
   MahjongPerformance,
-  "date" | "performance"
+  "point" | "score" | "date"
 >;
 
 export interface IMahjongRecentGamesUseCase {

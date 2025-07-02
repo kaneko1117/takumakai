@@ -1,10 +1,14 @@
 import {
   MahjongPerformance,
+  MahjongPerformanceKey,
   MahjongPerformanceMethods,
   MahjongPerformanceMethodsType,
 } from "@/core/entity/mahjongStatus/model";
 
-export type MahjongPerformanceType = Pick<MahjongPerformance, "performance">;
+export type MahjongPerformanceType = Pick<
+  Pick<MahjongPerformance, MahjongPerformanceKey>,
+  "averagePlace" | "averagePoints" | "bestScore" | "averageScore"
+>;
 
 export interface IMahjongPerformanceUseCase {
   mahjongPerformanceMethods: MahjongPerformanceMethodsType;

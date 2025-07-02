@@ -1,8 +1,5 @@
-import {
-  Card as ShadcnCard,
-  CardContent,
-  CardFooter,
-} from "@/components/shadcn/card";
+import { Card as ShadcnCard, CardContent } from "@/components/shadcn/card";
+import { Progress } from "@/components/shadcn/progress";
 
 import { Calendar } from "lucide-react";
 
@@ -20,9 +17,35 @@ export const CardPointContents = ({ date, point }: Props) => {
           <p className="text-gray">{date}</p>
         </div>
         <div>
-          <p></p>
+          <p>{point}</p>
         </div>
       </div>
     </CardContent>
+  );
+};
+
+export const CardScoreContents = ({ score }: { score: number }) => {
+  return (
+    <CardContent className="flex flex-col gap-2">
+      <div className="flex items-center justify-between">
+        <p className="text-gray">スコア</p>
+        <p className="font-bold text-lg">{score.toLocaleString()}</p>
+      </div>
+      <div>
+        <Progress value={(score / 60000) * 100} />
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-gray">0</p>
+          <p className="text-sm text-gray">60,000</p>
+        </div>
+      </div>
+    </CardContent>
+  );
+};
+
+export const CardLayout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <ShadcnCard className="w-full p-2 gap-4 shadow-none py-5">
+      {children}
+    </ShadcnCard>
   );
 };

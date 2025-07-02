@@ -2,7 +2,6 @@ import {
   MahjongPerformanceUnitAndType,
   handleMahjongPerformance,
   handleMahjongPlayStyleSubject,
-  formatNumberWithComma,
   formatSignedNumber,
 } from "./service";
 
@@ -25,7 +24,7 @@ export const MahjongPlayStyleMethods: MahjongPlayStyleMethodsType = {
   handleMahjongPlayStyleSubject,
 };
 
-export type MahjongPerformanceType =
+export type MahjongPerformanceKey =
   | "averagePoints"
   | "averagePlace"
   | "averageScore"
@@ -33,20 +32,23 @@ export type MahjongPerformanceType =
   | "score"
   | "point";
 
-export type MahjongPerformance = {
-  id: string;
-  performance: { type: MahjongPerformanceType; value: number }[];
-  date: string;
+type MahjongPerformanceWrapper<T extends string, K extends object> = {
+  [key in T | keyof K]: key extends T ? number : string;
 };
+
+export type MahjongPerformance = MahjongPerformanceWrapper<
+  MahjongPerformanceKey,
+  { id: string; date: string }
+>;
 
 export type MahjongPerformanceMethodsType = {
   handleMahjongPerformance: (type: string) => MahjongPerformanceUnitAndType;
-  formatNumberWithComma: (num: number) => string;
+
   formatSignedNumber: (num: number) => string;
 };
 
 export const MahjongPerformanceMethods: MahjongPerformanceMethodsType = {
   handleMahjongPerformance,
-  formatNumberWithComma,
+
   formatSignedNumber,
 };

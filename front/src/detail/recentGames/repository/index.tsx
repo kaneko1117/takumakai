@@ -9,63 +9,33 @@ const getRecentGames = async (): Promise<MahjongRecentGamesType[]> => {
       const recentGamesData: MahjongRecentGamesType[] = [
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: 50000 },
-            {
-              type: "point",
-              value: 20,
-            },
-          ],
+          score: 50000,
+          point: 20,
         },
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: 60000 },
-            {
-              type: "point",
-              value: 60,
-            },
-          ],
+          score: 60000,
+          point: 60,
         },
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: 25000 },
-            {
-              type: "point",
-              value: -5,
-            },
-          ],
+          score: 25000,
+          point: -5,
         },
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: -12000 },
-            {
-              type: "point",
-              value: -62,
-            },
-          ],
+          score: -12000,
+          point: -62,
         },
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: 62000 },
-            {
-              type: "point",
-              value: 52,
-            },
-          ],
+          score: 62000,
+          point: 52,
         },
         {
           date: "2025/06/01",
-          performance: [
-            { type: "score", value: 30000 },
-            {
-              type: "point",
-              value: 0,
-            },
-          ],
+          score: 30000,
+          point: 0,
         },
       ];
       resolve(recentGamesData);
