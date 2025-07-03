@@ -2,10 +2,11 @@ import { Card as ShadcnCard, CardContent } from "@/components/shadcn/card";
 import { Progress } from "@/components/shadcn/progress";
 
 import { Calendar } from "lucide-react";
+import { ReactNode } from "react";
 
 type Props = {
   date: string;
-  point: string;
+  point: ReactNode;
 };
 
 export const CardPointContents = ({ date, point }: Props) => {

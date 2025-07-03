@@ -18,10 +18,10 @@ type Props = {
 export const RecentGames = ({ data }: Props) => {
   const repo = mahjongRecentRepository;
   const useCase = mahjongRecentGamesUseCase(repo);
-  const { handlePoint } = useMahjongRecentGamesController(useCase);
+  const { Point } = useMahjongRecentGamesController(useCase, data.point);
   return (
     <CardLayout>
-      <CardPointContents date={data.date} point={handlePoint(data.point)} />
+      <CardPointContents date={data.date} point={Point} />
       <CardScoreContents score={data.score} />
     </CardLayout>
   );
