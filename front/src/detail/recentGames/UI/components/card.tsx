@@ -26,6 +26,7 @@ export const CardPointContents = ({ date, point }: Props) => {
 };
 
 export const CardScoreContents = ({ score }: { score: number }) => {
+  const MAX_SCORE = 60000;
   return (
     <CardContent className="flex flex-col gap-2">
       <div className="flex items-center justify-between">
@@ -33,10 +34,10 @@ export const CardScoreContents = ({ score }: { score: number }) => {
         <p className="font-bold text-lg">{score.toLocaleString()}</p>
       </div>
       <div>
-        <Progress value={(score / 60000) * 100} />
+        <Progress value={(score / MAX_SCORE) * 100} />
         <div className="flex items-center justify-between">
           <p className="text-sm text-gray">0</p>
-          <p className="text-sm text-gray">60,000</p>
+          <p className="text-sm text-gray">{MAX_SCORE.toLocaleString()}</p>
         </div>
       </div>
     </CardContent>

@@ -27,7 +27,7 @@ export const Card = ({ children, data, useCase }: Props) => {
       <CardFooter className="text-center text-sm text-gray-500 flex gap-2">
         {formattedData.map((item, index) => (
           <p key={index}>
-            {item.subject}:
+            {item.subject}:　
             <span className="text-primary font-bold text-base">
               {item.percentage}%
             </span>
