@@ -33,7 +33,7 @@ export const RankingCard = ({ data, useCase }: Props) => {
             <p className="text-xs text-gray">{unitAndType.type}</p>
             <div>
               <span className="text-primary text-base mx-1 font-bold">
-                {data.score}
+                {data.value}
               </span>
               {unitAndType.unit}
             </div>

@@ -3,27 +3,15 @@ import {
   MahjongPerformanceType,
 } from "@/core/usecase/mahjongPerformance";
 
-const getMahjongPerformance = async (): Promise<MahjongPerformanceType[]> => {
+const getMahjongPerformance = async (): Promise<MahjongPerformanceType> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const performanceData: MahjongPerformanceType[] = [
-        {
-          type: "averagePoints",
-          score: 123,
-        },
-        {
-          type: "averagePlace",
-          score: 2.23,
-        },
-        {
-          type: "bestScore",
-          score: 85000,
-        },
-        {
-          type: "averageScore",
-          score: 32000,
-        },
-      ];
+      const performanceData: MahjongPerformanceType = {
+        averagePoints: 123,
+        averagePlace: 2.23,
+        bestScore: 85000,
+        averageScore: 32000,
+      };
       resolve(performanceData);
     }, 1000);
   });

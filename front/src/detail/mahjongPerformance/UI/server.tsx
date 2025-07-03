@@ -7,7 +7,5 @@ export const Performance = async () => {
   const repo = mahjongPerformanceRepository;
   const useCase = mahjongPerformanceUseCase(repo);
   const { performanceData } = await getPerformance(useCase);
-  return performanceData.map((data) => (
-    <DetailCard key={data.type} data={data} useCase={useCase} />
-  ));
+  return <DetailCard data={performanceData} useCase={useCase} />;
 };

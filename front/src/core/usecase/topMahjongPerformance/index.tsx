@@ -5,11 +5,10 @@ import {
 } from "@/core/entity/mahjongStatus/model";
 import { User } from "@/core/entity/users/model";
 
-export type TopMahjongPerformanceType = Pick<
-  MahjongPerformance,
-  "type" | "score"
-> &
-  Pick<User, "imageUrl" | "name">;
+export type TopMahjongPerformanceType = {
+  type: keyof MahjongPerformance;
+  value: number;
+} & Pick<User, "imageUrl" | "name">;
 
 export interface ITopMahjongPerformanceUseCase {
   mahjongPerformanceMethods: MahjongPerformanceMethodsType;
