@@ -1,7 +1,11 @@
-import {User, UserMethods, UserMethodsType} from "@/core/entity/users/model";
+import { User, UserMethods, UserMethodsType } from "@/core/entity/users/model";
 import { ObjectsKeyExtract } from "../_helper/type";
 
-export type RegisterPlayersType = Pick<User, "id">;
+type ToArray<T extends object> = {
+  [K in keyof T]: T[K][];
+};
+
+export type RegisterPlayersType = ToArray<Pick<User, "id">>;
 
 type RegisterPlayersValidation = ObjectsKeyExtract<
   UserMethodsType,
@@ -9,25 +13,25 @@ type RegisterPlayersValidation = ObjectsKeyExtract<
 >;
 
 export interface IRegisterPlayersUseCase {
-    registerPlayersValidation:()=>RegisterPlayersValidation;
-    registerPlayers:(data:RegisterPlayersType[])=>Promise<void>;
+  registerPlayersValidation: () => RegisterPlayersValidation;
+  registerPlayers: (data: RegisterPlayersType) => Promise<void>;
 }
 
 export interface IRegisterRepository {
-    registerPlayers:(data:RegisterPlayersType[]) =>Promise<void>
+  registerPlayers: (data: RegisterPlayersType) => Promise<void>;
 }
 
-const registerPlayerValidation=():RegisterPlayersValidation=>{
-    return {
-        userIDValidation:UserMethods.userIDValidation
-    }
-}
+const registerPlayerValidation = (): RegisterPlayersValidation => {
+  return {
+    userIDValidation: UserMethods.userIDValidation,
+  };
+};
 
-export const registerPlayersUseCase = (repo:IRegisterRepository):IRegisterPlayersUseCase=>{
-    return {
-        registerPlayersValidation:registerPlayerValidation,
-        registerPlayers:repo.registerPlayers,
-    }
-}
-
-
+export const registerPlayersUseCase = (
+  repo: IRegisterRepository
+): IRegisterPlayersUseCase => {
+  return {
+    registerPlayersValidation: registerPlayerValidation,
+    registerPlayers: repo.registerPlayers,
+  };
+};
