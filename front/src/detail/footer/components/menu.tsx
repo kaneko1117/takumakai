@@ -31,11 +31,19 @@ export const Menu = () => {
           ランキング
         </Link>
         <Separator orientation="vertical" />
-        {/* ページを作ったらLinkにする*/}
-        <div className={cn(linkVariant({ isActive: false }))}>
+        {/* 
+        リンクを動的にする。
+        1. ログインしていない場合は、リンクを無効化する。
+        2. ログインしている場合は、/game/newに遷移する。
+        3. ログインしているかつ対局中の場合は、対局中のページに遷移する。
+        */}
+        <Link
+          href={"/game/new"}
+          className={cn(linkVariant({ isActive: false }))}
+        >
           <Zap className="mb-1" />
           対局
-        </div>
+        </Link>
         <Separator orientation="vertical" />
         <Link
           href="/member"

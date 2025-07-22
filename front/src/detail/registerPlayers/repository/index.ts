@@ -14,6 +14,16 @@ const registerPlayers = async (data: RegisterPlayersType): Promise<void> => {
   });
 };
 
+const getPlayers = async (): Promise<RegisterPlayersType> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const players: RegisterPlayersType = { id: ["1", "2", "3", "4", "5"] };
+      resolve(players);
+    }, 1000);
+  });
+};
+
 export const registerPlayerRepository: IRegisterRepository = {
   registerPlayers,
+  getPlayers,
 };

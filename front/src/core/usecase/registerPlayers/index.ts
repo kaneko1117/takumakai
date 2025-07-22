@@ -15,10 +15,12 @@ type RegisterPlayersValidation = ObjectsKeyExtract<
 export interface IRegisterPlayersUseCase {
   registerPlayersValidation: () => RegisterPlayersValidation;
   registerPlayers: (data: RegisterPlayersType) => Promise<void>;
+  getPlayers: () => Promise<RegisterPlayersType>;
 }
 
 export interface IRegisterRepository {
   registerPlayers: (data: RegisterPlayersType) => Promise<void>;
+  getPlayers: () => Promise<RegisterPlayersType>;
 }
 
 const registerPlayerValidation = (): RegisterPlayersValidation => {
@@ -33,5 +35,6 @@ export const registerPlayersUseCase = (
   return {
     registerPlayersValidation: registerPlayerValidation,
     registerPlayers: repo.registerPlayers,
+    getPlayers: repo.getPlayers,
   };
 };
