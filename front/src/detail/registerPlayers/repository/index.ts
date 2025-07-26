@@ -1,4 +1,5 @@
 import {
+  GetPlayersType,
   IRegisterRepository,
   RegisterPlayersType,
 } from "@/core/usecase/registerPlayers";
@@ -14,10 +15,16 @@ const registerPlayers = async (data: RegisterPlayersType): Promise<void> => {
   });
 };
 
-const getPlayers = async (): Promise<RegisterPlayersType> => {
+const getPlayers = async (): Promise<GetPlayersType> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const players: RegisterPlayersType = { id: ["1", "2", "3", "4", "5"] };
+      const players: GetPlayersType = [
+        { id: "1", name: "琢磨さん" },
+        { id: "2", name: "あゆむ" },
+        { id: "3", name: "松本くん" },
+        { id: "4", name: "南里くん" },
+        { id: "5", name: "金子" },
+      ];
       resolve(players);
     }, 1000);
   });

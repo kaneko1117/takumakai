@@ -6,6 +6,7 @@ type ToArray<T extends object> = {
 };
 
 export type RegisterPlayersType = ToArray<Pick<User, "id">>;
+export type GetPlayersType = Pick<User, "id" | "name">[];
 
 type RegisterPlayersValidation = ObjectsKeyExtract<
   UserMethodsType,
@@ -15,12 +16,12 @@ type RegisterPlayersValidation = ObjectsKeyExtract<
 export interface IRegisterPlayersUseCase {
   registerPlayersValidation: () => RegisterPlayersValidation;
   registerPlayers: (data: RegisterPlayersType) => Promise<void>;
-  getPlayers: () => Promise<RegisterPlayersType>;
+  getPlayers: () => Promise<GetPlayersType>;
 }
 
 export interface IRegisterRepository {
   registerPlayers: (data: RegisterPlayersType) => Promise<void>;
-  getPlayers: () => Promise<RegisterPlayersType>;
+  getPlayers: () => Promise<GetPlayersType>;
 }
 
 const registerPlayerValidation = (): RegisterPlayersValidation => {

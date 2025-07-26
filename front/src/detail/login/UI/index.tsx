@@ -1,9 +1,9 @@
 "use client";
 import { Dialog } from "@/components/common/dialog";
 import { Form } from "./components/form";
-import { loginRepository } from "../../repository";
+import { loginRepository } from "../repository";
 import { loginUseCase } from "@/core/usecase/login";
-import { useLoginController } from "../hooks/useLoginController";
+import { useLoginController } from "../controller/hooks/useLoginController";
 
 export const LoginDialog = () => {
   const repo = loginRepository;

@@ -1,19 +1,23 @@
+"use client";
 import { Users } from "lucide-react";
 import {
   Card as ShadcnCard,
   CardContent,
-  CardFooter,
   CardHeader,
 } from "@/components/shadcn/card";
-import { registerPlayersUseCase } from "@/core/usecase/registerPlayers";
+import {
+  GetPlayersType,
+  registerPlayersUseCase,
+} from "@/core/usecase/registerPlayers";
 import { registerPlayerRepository } from "../repository";
 import { useRegisterPlayers } from "../controller/hooks/useRegisterPlayers";
+import { Checkbox } from "./components/checkbox";
 
-export const RegisterPlayers = () => {
-  // This component will handle the registration of players
-  // It will use the registerPlayersUseCase and registerPlayerRepository to perform the registration
+type Props = {
+  data: GetPlayersType;
+};
 
-  // Placeholder for future implementation
+export const RegisterPlayers = ({ data }: Props) => {
   const repo = registerPlayerRepository;
   const useCase = registerPlayersUseCase(repo);
   const { validate, fetcher } = useRegisterPlayers(useCase);
@@ -25,7 +29,9 @@ export const RegisterPlayers = () => {
           <h2 className="font-bold">参加者選択</h2>
         </div>
       </CardHeader>
-      <CardContent></CardContent>
+      <CardContent>
+        <Checkbox onSubmit={fetcher} validate={validate} data={data} />
+      </CardContent>
     </ShadcnCard>
   );
 };
