@@ -4,6 +4,7 @@ import {
   RegisterPlayersType,
 } from "@/core/usecase/registerPlayers";
 import { Checkbox as ShadcnCheckBox } from "@/components/shadcn/checkbox";
+import { Button } from "@/components/shadcn/button";
 
 type Props = {
   onSubmit: (values: RegisterPlayersType) => void;
@@ -21,8 +22,10 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
         helpers.resetForm();
       }}
       validate={validate}
+      validateOnBlur={false}
+      validateOnChange={false}
     >
-      {({ errors, touched, values, handleChange }) => (
+      {({ errors, values, handleChange }) => (
         <Form className="flex flex-col gap-4">
           {data.map((player) => (
             <div key={player.id} className="flex items-center gap-2">
@@ -43,12 +46,14 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
               <label htmlFor={player.id}>{player.name}</label>
             </div>
           ))}
-          {errors.id && touched.id && (
-            <div className="text-red-500">{errors.id}</div>
-          )}
-          <button type="submit" className="btn btn-primary mt-4">
+
+          <div className="text-red-500 font-medium h-4 text-sm">
+            {errors.id}
+          </div>
+
+          <Button type="submit" className="btn btn-primary mt-5">
             登録
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>

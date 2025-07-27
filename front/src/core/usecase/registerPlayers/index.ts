@@ -10,7 +10,7 @@ export type GetPlayersType = Pick<User, "id" | "name">[];
 
 type RegisterPlayersValidation = ObjectsKeyExtract<
   UserMethodsType,
-  "userIDValidation"
+  "registerPlayersValidation"
 >;
 
 export interface IRegisterPlayersUseCase {
@@ -26,7 +26,7 @@ export interface IRegisterRepository {
 
 const registerPlayerValidation = (): RegisterPlayersValidation => {
   return {
-    userIDValidation: UserMethods.userIDValidation,
+    registerPlayersValidation: UserMethods.registerPlayersValidation,
   };
 };
 

@@ -7,6 +7,13 @@ export const userIDValidation = (id: string): string => {
   return "";
 };
 
+export const registerPlayersValidation = (ids: string[]): string => {
+  if (ids.length !== 4) {
+    return "4人のプレイヤーを選択してください";
+  }
+  return "";
+};
+
 export const userNameValidation = (name: string): string => {
   if (!name) {
     return "名前は必須です";

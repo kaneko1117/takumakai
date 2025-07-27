@@ -10,12 +10,14 @@ export const useRegisterPlayers = (usecase: IRegisterPlayersUseCase) => {
 
   const validate = (values: RegisterPlayersType) => {
     const errors: FormikErrors<RegisterPlayersType> = {};
-    values.id.forEach((id) => {
-      const userIDError = registerValidation.userIDValidation(id);
-      if (userIDError) {
-        errors.id = userIDError;
-      }
-    });
+
+    const validationError = registerValidation.registerPlayersValidation(
+      values.id
+    );
+    if (validationError) {
+      errors.id = validationError;
+    }
+
     return errors;
   };
 
