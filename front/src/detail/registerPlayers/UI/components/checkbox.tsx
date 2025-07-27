@@ -5,6 +5,10 @@ import {
 } from "@/core/usecase/registerPlayers";
 import { Checkbox as ShadcnCheckBox } from "@/components/shadcn/checkbox";
 import { Button } from "@/components/shadcn/button";
+import {
+  Alert as ShadcnAlert,
+  AlertDescription,
+} from "@/components/shadcn/alert";
 
 type Props = {
   onSubmit: (values: RegisterPlayersType) => void;
@@ -50,6 +54,11 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
           <div className="text-red-500 font-medium h-4 text-sm">
             {errors.id}
           </div>
+          <ShadcnAlert variant="default" className="bg-primary/10 border-none">
+            <AlertDescription className="text-sm">
+              <li>参加者を４人選択してください。</li>
+            </AlertDescription>
+          </ShadcnAlert>
 
           <Button type="submit" className="btn btn-primary mt-5">
             登録

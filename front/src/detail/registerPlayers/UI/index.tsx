@@ -12,6 +12,7 @@ import {
 import { registerPlayerRepository } from "../repository";
 import { useRegisterPlayers } from "../controller/hooks/useRegisterPlayers";
 import { Checkbox } from "./components/checkbox";
+import { Alert } from "./components/alert";
 
 type Props = {
   data: GetPlayersType;
