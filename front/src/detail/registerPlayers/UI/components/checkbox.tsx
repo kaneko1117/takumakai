@@ -21,7 +21,6 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
     <Formik<RegisterPlayersType>
       initialValues={{ id: [] }}
       onSubmit={(values, helpers) => {
-        console.log("Submitting values:", values);
         onSubmit(values);
         helpers.resetForm();
       }}

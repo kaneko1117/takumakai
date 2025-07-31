@@ -7,9 +7,7 @@ import {
 const registerPlayers = async (data: RegisterPlayersType): Promise<void> => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      data.id.forEach((id) => {
-        console.log(`Registered player with ID: ${id}`);
-      });
+      console.log(data);
       resolve();
     }, 1000);
   });
