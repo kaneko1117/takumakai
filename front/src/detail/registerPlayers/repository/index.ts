@@ -20,10 +20,10 @@ const getPlayers = async (): Promise<GetPlayersType> => {
     setTimeout(() => {
       const players: GetPlayersType = [
         { id: "1", name: "琢磨さん" },
-        { id: "2", name: "あゆむ" },
-        { id: "3", name: "松本くん" },
-        { id: "4", name: "南里くん" },
-        { id: "5", name: "金子" },
+        { id: "2", name: "A" },
+        { id: "3", name: "B" },
+        { id: "4", name: "C" },
+        { id: "5", name: "D" },
       ];
       resolve(players);
     }, 1000);
