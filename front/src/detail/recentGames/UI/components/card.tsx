@@ -17,9 +17,7 @@ export const CardPointContents = ({ date, point }: Props) => {
           <Calendar className="w-4 h-4" />
           <p className="text-gray">{date}</p>
         </div>
-        <div>
-          <p>{point}</p>
-        </div>
+        <div>{point}</div>
       </div>
     </CardContent>
   );
