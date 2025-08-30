@@ -172,3 +172,39 @@ graph TD
 ## 素案
 
 UI → controller(hooks) → usecase(機能ごとに validation,fetch と状態管理をまとめる) → repo_interface ← repo（useSWR とか）
+
+# ER 図
+
+```mermaid
+erDiagram
+    GAMES ||--o{ GAME_RESULTS : "has"
+    USERS ||--o{ GAME_RESULTS : "has"
+
+    USERS {
+        string id PK
+        string name
+        string department
+        string password_hash
+        string profile_image_url
+        datetime created_at
+        datetime updated_at
+    }
+
+    GAMES {
+        string id PK
+        datetime played_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    GAME_RESULTS {
+        string id PK
+        string user_id FK
+        string game_id FK
+        int score
+        boolean is_tobi
+        datetime created_at
+        datetime updated_at
+    }
+
+```
