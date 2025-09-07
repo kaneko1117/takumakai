@@ -10,12 +10,13 @@ export type TopMahjongPerformanceType = {
   value: number;
 } & Pick<User, "imageUrl" | "name">;
 
-export interface ITopMahjongPerformanceUseCase {
-  mahjongPerformanceMethods: MahjongPerformanceMethodsType;
-  getTopMahjongPerformance: () => Promise<TopMahjongPerformanceType[]>;
-}
 export interface ITopMahjongPerformanceRepository {
   getTopMahjongPerformance: () => Promise<TopMahjongPerformanceType[]>;
+}
+
+export interface ITopMahjongPerformanceUseCase
+  extends ITopMahjongPerformanceRepository {
+  mahjongPerformanceMethods: MahjongPerformanceMethodsType;
 }
 
 export const mahjongPerformanceUseCase = (

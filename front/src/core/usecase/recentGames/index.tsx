@@ -9,13 +9,13 @@ export type MahjongRecentGamesType = Pick<
   "point" | "score" | "date"
 >;
 
-export interface IMahjongRecentGamesUseCase {
-  mahjongRecentGamesMethods: MahjongPerformanceMethodsType;
+export interface IMahjongRecentGamesRepository {
   getRecentGames: () => Promise<MahjongRecentGamesType[]>;
 }
 
-export interface IMahjongRecentGamesRepository {
-  getRecentGames: () => Promise<MahjongRecentGamesType[]>;
+export interface IMahjongRecentGamesUseCase
+  extends IMahjongRecentGamesRepository {
+  mahjongRecentGamesMethods: MahjongPerformanceMethodsType;
 }
 
 export const mahjongRecentGamesUseCase = (

@@ -8,14 +8,12 @@ type LoginValidation = ObjectsKeyExtract<
 
 export type FormType = Pick<User, "name" | "password">;
 
-// UseCaseの型定義
-export interface ILoginUseCase {
-  loginValidation: () => LoginValidation;
-  login: (data: FormType) => Promise<void>;
-}
-
 export interface ILoginRepository {
   login: (data: FormType) => Promise<void>;
+}
+// UseCaseの型定義
+export interface ILoginUseCase extends ILoginRepository {
+  loginValidation: () => LoginValidation;
 }
 
 const loginValidation = (): LoginValidation => {

@@ -8,13 +8,12 @@ type SignupValidation = ObjectsKeyExtract<
 
 export type FormType = Pick<User, "name" | "password" | "department">;
 
-export interface ISignupUseCase {
-  signupValidation: () => SignupValidation;
+export interface ISignupRepository {
   signup: (data: FormType) => Promise<void>;
 }
 
-export interface ISignupRepository {
-  signup: (data: FormType) => Promise<void>;
+export interface ISignupUseCase extends ISignupRepository {
+  signupValidation: () => SignupValidation;
 }
 
 const signupValidation = (): SignupValidation => {

@@ -13,15 +13,13 @@ type RegisterPlayersValidation = ObjectsKeyExtract<
   "registerPlayersValidation"
 >;
 
-export interface IRegisterPlayersUseCase {
-  registerPlayersValidation: () => RegisterPlayersValidation;
+export interface IRegisterRepository {
   registerPlayers: (data: RegisterPlayersType) => Promise<void>;
   getPlayers: () => Promise<GetPlayersType>;
 }
 
-export interface IRegisterRepository {
-  registerPlayers: (data: RegisterPlayersType) => Promise<void>;
-  getPlayers: () => Promise<GetPlayersType>;
+export interface IRegisterPlayersUseCase extends IRegisterRepository {
+  registerPlayersValidation: () => RegisterPlayersValidation;
 }
 
 const registerPlayerValidation = (): RegisterPlayersValidation => {
