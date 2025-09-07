@@ -11,7 +11,7 @@ export type GameType = Pick<HanshuangResult, "gameId">;
 
 export interface IRegisterHanshuangResultRepository {
   getPlayers: () => Promise<PlayerTypes>;
-  RegisterHanshuangResults: (
+  registerHanshuangResults: (
     hanshuangResults: HanshuangResultTypes
   ) => Promise<void>;
   getHanshuangResults: (hanshuangID: string) => Promise<HanshuangResultTypes>;
@@ -20,7 +20,7 @@ export interface IRegisterHanshuangResultRepository {
 
 export interface IRegisterHanshuangResultUseCase
   extends IRegisterHanshuangResultRepository {
-  registerHanshuangResults: GameResultMethodsType;
+  registerHanshuangMethods: GameResultMethodsType;
 }
 
 export const registerHanshuangResultUseCase = (
@@ -28,6 +28,6 @@ export const registerHanshuangResultUseCase = (
 ): IRegisterHanshuangResultUseCase => {
   return {
     ...repo,
-    registerHanshuangResults: GameResultMethods,
+    registerHanshuangMethods: GameResultMethods,
   };
 };
