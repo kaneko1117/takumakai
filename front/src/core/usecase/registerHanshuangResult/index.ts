@@ -1,4 +1,8 @@
-import { HanshuangResult } from "@/core/entity/hanshuangResult/model";
+import {
+  GameResultMethods,
+  GameResultMethodsType,
+  HanshuangResult,
+} from "@/core/entity/hanshuangResult/model";
 import { User } from "@/core/entity/users/model";
 
 export type PlayerTypes = Pick<User, "id" | "name">[];
@@ -13,3 +17,17 @@ export interface IRegisterHanshuangResultRepository {
   getHanshuangResults: (hanshuangID: string) => Promise<HanshuangResultTypes>;
   getGame: () => Promise<GameType>;
 }
+
+export interface IRegisterHanshuangResultUseCase
+  extends IRegisterHanshuangResultRepository {
+  registerHanshuangResults: GameResultMethodsType;
+}
+
+export const registerHanshuangResultUseCase = (
+  repo: IRegisterHanshuangResultRepository
+): IRegisterHanshuangResultUseCase => {
+  return {
+    ...repo,
+    registerHanshuangResults: GameResultMethods,
+  };
+};
