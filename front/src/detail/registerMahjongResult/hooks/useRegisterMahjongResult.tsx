@@ -33,9 +33,6 @@ export const useRegisterMahjongResult = (
   const error =
     registerMahjongResultsValidation.mahjongResultsValidation(formValue);
 
-  console.log("formValue", formValue);
-  console.log("error", error);
-
   return {
     registerMahjongResults,
     onChange,
