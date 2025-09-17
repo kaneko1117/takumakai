@@ -177,8 +177,9 @@ UI → controller(hooks) → usecase(機能ごとに validation,fetch と状態�
 
 ```mermaid
 erDiagram
-    GAMES ||--o{ GAME_RESULTS : "has"
-    USERS ||--o{ GAME_RESULTS : "has"
+    GAMES ||--o{ HANCHANS : "has"
+    HANCHANS ||--o{ RESULTS : "has"
+    USERS ||--o{ RESULTS : "has"
 
     USERS {
         string id PK
@@ -197,14 +198,21 @@ erDiagram
         datetime updated_at
     }
 
-    GAME_RESULTS {
+    HANSHUANG {
+        string id PK
+        string game_id FK
+        datetime played_at
+        datetime created_at
+        datetime updated_at
+    }
+
+    RESULTS {
         string id PK
         string user_id FK
-        string game_id FK
+        string hanshuang_id FK
         int score
         boolean is_tobi
         datetime created_at
         datetime updated_at
     }
-
 ```
