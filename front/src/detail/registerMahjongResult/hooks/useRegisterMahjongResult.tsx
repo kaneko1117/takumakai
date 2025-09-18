@@ -17,10 +17,10 @@ export const useRegisterMahjongResult = (
 
   const [formValue, setFormValue] = useState<MahjongResultTypes>([]);
 
-  const regoisterMahojongMethods = usecase.registerMahjongMethods();
+  const registerMahjongMethods = usecase.registerMahjongMethods();
 
   const onChange = (score: number, userId: string, userName: string) => {
-    const isTobi = regoisterMahojongMethods.isTobiChecker(score);
+    const isTobi = registerMahjongMethods.isTobiChecker(score);
     setFormValue((prev) => {
       const existing = prev.find((item) => item.userId === userId);
       if (existing) {
@@ -66,7 +66,7 @@ export const useRegisterMahjongResult = (
     );
   };
 
-  const error = regoisterMahojongMethods.mahjongResultsValidation(formValue);
+  const error = registerMahjongMethods.mahjongResultsValidation(formValue);
 
   const isTobashiView = (userId: string): boolean => {
     const isTobiExists = formValue.some((item) => item.isTobi);
