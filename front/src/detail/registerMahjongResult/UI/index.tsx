@@ -117,7 +117,7 @@ export const RegisterMahjongResult = ({ data }: Props) => {
                     disabled={isTobashiDisable(player.userId)}
                   />
                   <p
-                    className={labelValiants({
+                    className={labelVariants({
                       isTobashi: selectFormValue(player.userId).isTobashi,
                       isDisabled: isTobashiDisable(player.userId),
                     })}
