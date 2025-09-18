@@ -19,7 +19,7 @@ export interface IRegisterMahjongResultRepository {
   ) => Promise<void>;
   getMahjongResults: (
     gameId: string,
-    hanshuangIdID: string
+    hanshuangId: string
   ) => Promise<MahjongResultTypes>;
 }
 
