@@ -1,5 +1,8 @@
 const NAME_REGEX = /^[ぁ-ゖゝゞァ-ヷー一-龥丑-響々﨑㟢]+$/;
 
+// 状態管理のためにexportするけど、これは例外。基本的にはservice層で完結させる。
+export const PLAYER_NUMBER = 4;
+
 export const userIDValidation = (id: string): string => {
   if (!id) {
     return "IDは必須です";
@@ -8,7 +11,7 @@ export const userIDValidation = (id: string): string => {
 };
 
 export const registerPlayersValidation = (ids: string[]): string => {
-  if (ids.length !== 4) {
+  if (ids.length !== PLAYER_NUMBER) {
     return "4人のプレイヤーを選択してください";
   }
   return "";

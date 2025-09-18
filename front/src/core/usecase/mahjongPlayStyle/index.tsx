@@ -9,13 +9,12 @@ export type MahjongPlayStyleType = Pick<
   "subject" | "percentage"
 >;
 
-export interface IMahjongPlayStyleUseCase {
-  mahjongPlayStyleMethods: MahjongPlayStyleMethodsType;
+export interface IMahjongPlayStyleRepository {
   getMahjongPlayStyle: () => Promise<MahjongPlayStyleType[]>;
 }
 
-export interface IMahjongPlayStyleRepository {
-  getMahjongPlayStyle: () => Promise<MahjongPlayStyleType[]>;
+export interface IMahjongPlayStyleUseCase extends IMahjongPlayStyleRepository {
+  mahjongPlayStyleMethods: MahjongPlayStyleMethodsType;
 }
 
 export const mahjongPlayStyleUseCase = (

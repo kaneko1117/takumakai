@@ -10,12 +10,13 @@ export type MahjongPerformanceType = Pick<
   "averagePlace" | "averagePoints" | "bestScore" | "averageScore"
 >;
 
-export interface IMahjongPerformanceUseCase {
-  mahjongPerformanceMethods: MahjongPerformanceMethodsType;
-  getMahjongPerformance: () => Promise<MahjongPerformanceType>;
-}
 export interface IMahjongPerformanceRepository {
   getMahjongPerformance: () => Promise<MahjongPerformanceType>;
+}
+
+export interface IMahjongPerformanceUseCase
+  extends IMahjongPerformanceRepository {
+  mahjongPerformanceMethods: MahjongPerformanceMethodsType;
 }
 
 export const mahjongPerformanceUseCase = (

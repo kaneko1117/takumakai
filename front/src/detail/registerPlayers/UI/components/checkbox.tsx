@@ -1,35 +1,45 @@
-import { Formik, Form, FormikErrors } from "formik";
+import { Formik, FormikErrors } from "formik";
 import {
   GetPlayersType,
   RegisterPlayersType,
 } from "@/core/usecase/registerPlayers";
 import { Checkbox as ShadcnCheckBox } from "@/components/shadcn/checkbox";
-import { Button } from "@/components/shadcn/button";
 import {
   Alert as ShadcnAlert,
   AlertDescription,
 } from "@/components/shadcn/alert";
+import { AlertDialog } from "./alert-dialog";
+import { PLAYER_NUMBER } from "@/core/entity/users/service";
+import { useState } from "react";
 
 type Props = {
-  onSubmit: (values: RegisterPlayersType) => void;
+  onSubmit: (values: RegisterPlayersType) => Promise<void>;
   validate: (values: RegisterPlayersType) => FormikErrors<RegisterPlayersType>;
   data: GetPlayersType;
 };
 
 export const Checkbox = ({ onSubmit, validate, data }: Props) => {
+  const [names, setNames] = useState<string[]>([]);
   return (
     <Formik<RegisterPlayersType>
       initialValues={{ id: [] }}
-      onSubmit={(values, helpers) => {
-        onSubmit(values);
+      onSubmit={async (values, helpers) => {
+        await onSubmit(values);
+        // router処理をするまでの間、formをリセットしておく
         helpers.resetForm();
+        setNames([]);
       }}
       validate={validate}
       validateOnBlur={false}
       validateOnChange={false}
     >
-      {({ errors, values, handleChange }) => (
-        <Form className="flex flex-col gap-4">
+      {({ errors, values, handleChange, handleSubmit, isSubmitting }) => (
+        <form
+          className="flex flex-col gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           {data.map((player) => (
             <div key={player.id} className="flex items-center gap-2">
               <ShadcnCheckBox
@@ -38,12 +48,22 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
                 value={player.id}
                 checked={values.id.includes(player.id)}
                 onCheckedChange={(isChecked) => {
-                  const newValues = isChecked
-                    ? [...values.id, player.id]
-                    : values.id.filter((id) => id !== player.id);
-                  handleChange({
-                    target: { name: "id", value: newValues },
-                  });
+                  if (isChecked) {
+                    handleChange({
+                      target: { name: "id", value: [...values.id, player.id] },
+                    });
+                    setNames((prev) => [...prev, player.name]);
+                  } else {
+                    handleChange({
+                      target: {
+                        name: "id",
+                        value: values.id.filter((id) => id !== player.id),
+                      },
+                    });
+                    setNames((prev) =>
+                      prev.filter((name) => name !== player.name)
+                    );
+                  }
                 }}
               />
               <label htmlFor={player.id}>{player.name}</label>
@@ -59,10 +79,13 @@ export const Checkbox = ({ onSubmit, validate, data }: Props) => {
             </AlertDescription>
           </ShadcnAlert>
 
-          <Button type="submit" className="btn btn-primary mt-5">
-            登録
-          </Button>
-        </Form>
+          <AlertDialog
+            isSubmitting={isSubmitting}
+            isDisabled={values.id.length !== PLAYER_NUMBER}
+            onConfirm={handleSubmit}
+            names={names}
+          />
+        </form>
       )}
     </Formik>
   );
