@@ -6,9 +6,12 @@ import {
 export const registerMahjongResults = async (
   mahjongResults: MahjongResultTypes
 ): Promise<void> => {
-  setTimeout(() => {
-    console.log("Registered Mahjong results:", mahjongResults);
-  }, 1000);
+  await new Promise<void>((resolve) => {
+    setTimeout(() => {
+      console.log("Registered Mahjong results:", mahjongResults);
+      resolve();
+    }, 1000);
+  });
 };
 
 export const getMahjongResults = async (
