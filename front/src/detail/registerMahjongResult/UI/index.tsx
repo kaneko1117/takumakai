@@ -48,7 +48,7 @@ const inputVariants = cva("text-right w-50 h-10", {
   },
 });
 
-const labelValiants = cva("", {
+const labelVariants = cva("", {
   variants: {
     isTobashi: {
       true: "text-primary font-bold",
