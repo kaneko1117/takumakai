@@ -21,7 +21,6 @@ export const useRegisterMahjongResult = (
 
   const onChange = (score: number, userId: string, userName: string) => {
     const isTobi = regoisterMahojongMethods.isTobiChecker(score);
-
     setFormValue((prev) => {
       const existing = prev.find((item) => item.userId === userId);
       if (existing) {
@@ -76,7 +75,12 @@ export const useRegisterMahjongResult = (
     return !isTobi;
   };
 
-  console.log("formValue:", formValue);
+  const isTobashiDisable = (userId: string): boolean => {
+    const isTobashiExists = formValue.some((item) => item.isTobashi);
+    if (!isTobashiExists) return false;
+    const isTobashi = selectFormValue(userId).isTobashi;
+    return !isTobashi;
+  };
 
   return {
     registerMahjongResults,
@@ -84,6 +88,7 @@ export const useRegisterMahjongResult = (
     onClick,
     selectFormValue,
     isTobashiView,
+    isTobashiDisable,
     error,
     formValue,
   };

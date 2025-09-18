@@ -44,7 +44,17 @@ const inputVariants = cva("text-right w-50 h-10", {
   variants: {
     isTobi: {
       true: "text-red-500",
-      false: "",
+    },
+  },
+});
+
+const labelValiants = cva("", {
+  variants: {
+    isTobashi: {
+      true: "text-primary font-bold",
+    },
+    isDisabled: {
+      true: "text-gray/50",
     },
   },
 });
@@ -57,6 +67,7 @@ export const RegisterMahjongResult = ({ data }: Props) => {
     onClick,
     selectFormValue,
     isTobashiView,
+    isTobashiDisable,
     error,
     formValue,
   } = useRegisterMahjongResult(useCase);
@@ -103,8 +114,16 @@ export const RegisterMahjongResult = ({ data }: Props) => {
                     onCheckedChange={(checked) =>
                       onClick(!!checked, player.userId, player.userName)
                     }
+                    disabled={isTobashiDisable(player.userId)}
                   />
-                  <p className="">飛ばしボーナス</p>
+                  <p
+                    className={labelValiants({
+                      isTobashi: selectFormValue(player.userId).isTobashi,
+                      isDisabled: isTobashiDisable(player.userId),
+                    })}
+                  >
+                    飛ばしボーナス
+                  </p>
                 </Label>
               )}
             </div>
