@@ -19,6 +19,10 @@ import {
   AlertDialogTrigger,
   AlertDialog as ShadcnAlertDialog,
 } from "@/components/shadcn/alert-dialog";
+import {
+  Alert as ShadcnAlert,
+  AlertDescription,
+} from "@/components/shadcn/alert";
 import { Button } from "@/components/shadcn/button";
 import {
   MahjongResultTypes,
@@ -26,15 +30,36 @@ import {
 } from "@/core/usecase/registerMahjongResult";
 import { registerMahjongResultRepository } from "../repository";
 import { useRegisterMahjongResult } from "../hooks/useRegisterMahjongResult";
+import { cva } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+import { Checkbox } from "@/components/shadcn/checkbox";
+import { Label } from "@/components/shadcn/label";
+import { Fragment } from "react";
 
 type Props = {
   data: MahjongResultTypes;
 };
 
+const inputVariants = cva("text-right w-50 h-10", {
+  variants: {
+    isTobi: {
+      true: "text-red-500",
+      false: "",
+    },
+  },
+});
+
 export const RegisterMahjongResult = ({ data }: Props) => {
   const repo = registerMahjongResultRepository;
   const useCase = registerMahjongResultUseCase(repo);
-  const { onChange, formValue } = useRegisterMahjongResult(useCase);
+  const {
+    onChange,
+    onClick,
+    selectFormValue,
+    isTobashiView,
+    error,
+    formValue,
+  } = useRegisterMahjongResult(useCase);
   return (
     <Card>
       <CardHeader>
@@ -53,25 +78,52 @@ export const RegisterMahjongResult = ({ data }: Props) => {
               </Avatar>
               <p>{player.userName}</p>
             </div>
-            <Input
-              type="number"
-              placeholder="25,000"
-              className="text-right w-50 h-10"
-              value={
-                formValue.find((item) => item.userId === player.userId)
-                  ?.score ?? ""
-              }
-              onChange={(e) =>
-                onChange(Number(e.target.value), player.userId, player.userName)
-              }
-            />
+            <div className="flex justify-between">
+              <Input
+                type="number"
+                placeholder="25,000"
+                className={cn(
+                  inputVariants({
+                    isTobi: selectFormValue(player.userId).isTobi,
+                  })
+                )}
+                value={selectFormValue(player.userId).score}
+                onChange={(e) =>
+                  onChange(
+                    Number(e.target.value),
+                    player.userId,
+                    player.userName
+                  )
+                }
+              />
+              {isTobashiView(player.userId) && (
+                <Label>
+                  <Checkbox
+                    checked={selectFormValue(player.userId).isTobashi}
+                    onCheckedChange={(checked) =>
+                      onClick(!!checked, player.userId, player.userName)
+                    }
+                  />
+                  <p className="">飛ばしボーナス</p>
+                </Label>
+              )}
+            </div>
           </div>
         ))}
+        <ShadcnAlert
+          variant="default"
+          className="mt-10 bg-primary/10 border-none"
+        >
+          <AlertDescription className="text-sm">
+            <li>{error ? <>{error}</> : "スコアを確認して登録してください"}</li>
+          </AlertDescription>
+        </ShadcnAlert>
         <ShadcnAlertDialog>
           <AlertDialogTrigger asChild>
             <Button
-              className="btn btn-primary mt-5 font-bold w-full"
+              className="btn btn-primary mt-4 font-bold w-full"
               type="button"
+              disabled={!!error}
             >
               登録
             </Button>
@@ -79,8 +131,14 @@ export const RegisterMahjongResult = ({ data }: Props) => {
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>このスコアで登録しますか？</AlertDialogTitle>
-
-              <AlertDialogDescription></AlertDialogDescription>
+              <AlertDialogDescription>
+                {formValue.map((player) => (
+                  <Fragment key={player.userId}>
+                    <p className="pt-2">{player.userName}</p>
+                    <p>スコア: {player.score}</p>
+                  </Fragment>
+                ))}
+              </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel asChild>

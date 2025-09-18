@@ -212,6 +212,7 @@ erDiagram
         string hanshuang_id FK
         int score
         boolean is_tobi
+        boolean is_tobashi
         datetime created_at
         datetime updated_at
     }

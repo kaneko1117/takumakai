@@ -19,26 +19,30 @@ export const getMahjongResults = async (
     {
       userId: "1",
       userName: "Player 1",
-      score: 30000,
+      score: 80000,
       isTobi: false,
+      isTobashi: true,
     },
     {
       userId: "2",
       userName: "Player 2",
-      score: 25000,
+      score: -25000,
       isTobi: true,
+      isTobashi: false,
     },
     {
       userId: "3",
       userName: "Player 3",
       score: 20000,
       isTobi: false,
+      isTobashi: false,
     },
     {
       userId: "4",
       userName: "Player 4",
       score: 25000,
       isTobi: false,
+      isTobashi: false,
     },
   ];
 };
